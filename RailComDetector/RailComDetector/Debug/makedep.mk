@@ -4,3 +4,7 @@
 
 main.cpp
 
+ringbuffer.cpp
+
+XpressNetClient.cpp
+

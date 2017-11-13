@@ -9,9 +9,12 @@
 #ifndef RAILCOMENCODING_H_
 #define RAILCOMENCODING_H_
 
+#include <avr/io.h>
+#include <avr/pgmspace.h>
+
 #include <stdint.h>
 
-static const uint8_t RailComEncoding[256] =
+const uint8_t RailComEncoding[256] =
 {
 	0xFF,	//	0x00
 	0xFF,	//	0x01
