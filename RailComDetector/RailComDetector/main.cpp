@@ -170,61 +170,75 @@ int main(void)
 					ErrorInFrame = true;
 				}
 			}
+			
+			uint8_t* pRailComMessage = RailComMessage;
 		
 			if(!ErrorInFrame)
 			{
-				uint8_t MessageID = (RailComMessage[0] & 0x3C) >> 2;
-				switch(MessageID)
+				do		//	VERIFY THIS DO ... WHILE loop!! (untested - 28/11/2017)
 				{
-					case 0:		//	Channel 2 POM
+					uint8_t MessageID = (pRailComMessage[0] & 0x3C) >> 2;
+					switch(MessageID)
 					{
-						break;
-					}
+						case 0:		//	Channel 2 POM
+						{
+							uint8_t message[] = {0x09, 0x76, 0xE1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+							if(bHighAddressValid && bLowAddressValid)
+							{
+								message[3] = MyAddress.AddrHigh;
+								message[4] = MyAddress.AddrLow;
+							}
+							message[7] = ((pRailComMessage[0] & 0x03) << 6) + (pRailComMessage[1] & 0x3F);
+							message[8] = message[1] ^ message[2] ^ message[3] ^ message[4] ^ message[5] ^ message[6] ^ message[7];
+							XpressNetClientRespond(message);
+							pRailComMessage += 2;
+							break;
+						}
 				
-					case 1:		//	app:adr_low
-					{
-						MyAddress.AddrLow = ((RailComMessage[0] & 0x03) << 6) + (RailComMessage[1] & 0x3F);
-						bLowAddressValid = true;
-						break;
-					}
+						case 1:		//	app:adr_low
+						{
+							MyAddress.AddrLow = ((pRailComMessage[0] & 0x03) << 6) + (pRailComMessage[1] & 0x3F);
+							pRailComMessage += 2;
+							bLowAddressValid = true;
+							break;
+						}
 				
-					case 2:		//	app:adr_high
-					{
-						MyAddress.AddrHigh = ((RailComMessage[0] & 0x03) << 6) + (RailComMessage[1] & 0x3F);
-						bHighAddressValid = true;
-						break;
-					}
+						case 2:		//	app:adr_high
+						{
+							MyAddress.AddrHigh = ((pRailComMessage[0] & 0x03) << 6) + (pRailComMessage[1] & 0x3F);
+							pRailComMessage += 2;
+							bHighAddressValid = true;
+							break;
+						}
 				
-					case 3:		//	Channel 2 app:ext
-					{
-						break;
-					}
+						case 3:		//	Channel 2 app:ext
+						{
+							break;
+						}
 				
-					case 7:		//	Channel 2 app:dyn
-					{
-						break;
-					}
+						case 7:		//	Channel 2 app:dyn
+						{
+							break;
+						}
 				
-					case 12:	//	Channel 2 app:subID
-					{
-						break;
-					}
+						case 12:	//	Channel 2 app:subID
+						{
+							break;
+						}
 				
-					default:
-					{
-					
+						default:
+						{
+							//	Move pRailComMessage beyond &RailComMessage[RailcomCount), to avoid endless loop.
+						}
 					}
-				}
+				} 
+				while(pRailComMessage < RailComMessage + RailcomCount);
 				
 				if((true == bHighAddressValid) && (true == bLowAddressValid) && (false == bAddressResponded))
 				{
 					//	Send new address to master
-					uint8_t msg[16];
-					msg[0] =  8;
-					msg[1] = 0x75;
-					msg[2] = 0xF2;
-					msg[3] =  0;
-					msg[4] =  1;
+					uint8_t msg[] = {0x08, 0x75, 0xF2, 0x00, 0x01, 0x00, 0x00, 0x00 };
+						
 					msg[5] = MyAddress.AddrHigh;
 					msg[6] = MyAddress.AddrLow;
 					msg[7] = msg[1] ^ msg[2] ^ msg[3] ^ msg[4] ^ msg[5] ^ msg[6];
