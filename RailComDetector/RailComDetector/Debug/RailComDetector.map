@@ -1,7 +1,7 @@
 Archive member included to satisfy reference by file (symbol)
 
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
-                              C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega1284/avr51/crtatmega1284.o (exit)
+                              C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/1.2.193/gcc/dev/atmega1284/avr51/crtatmega1284.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_copy_data.o)
                               main.o (__do_copy_data)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_clear_bss.o)
@@ -15,8 +15,8 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 
 Discarded input sections
 
- .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega1284/avr51/crtatmega1284.o
- .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/1.2.193/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/1.2.193/gcc/dev/atmega1284/avr51/crtatmega1284.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
@@ -128,7 +128,7 @@ user_signatures  0x00850000         0x00000400         rw !x
 Linker script and memory map
 
 Address of section .data set to 0x800100
-LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega1284/avr51/crtatmega1284.o
+LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/1.2.193/gcc/dev/atmega1284/avr51/crtatmega1284.o
 LOAD main.o
 LOAD ringbuffer.o
 LOAD XpressNetClient.o
@@ -141,7 +141,7 @@ START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libm.a
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a
-LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega1284/avr51\libatmega1284.a
+LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/1.2.193/gcc/dev/atmega1284/avr51\libatmega1284.a
 END GROUP
                 0x00020000                __TEXT_REGION_LENGTH__ = DEFINED (__TEXT_REGION_LENGTH__)?__TEXT_REGION_LENGTH__:0x20000
                 0x0000ff00                __DATA_REGION_LENGTH__ = DEFINED (__DATA_REGION_LENGTH__)?__DATA_REGION_LENGTH__:0xff00
@@ -241,9 +241,9 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x73e
+.text           0x00000000      0x85e
  *(.vectors)
- .vectors       0x00000000       0x8c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .vectors       0x00000000       0x8c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/1.2.193/gcc/dev/atmega1284/avr51/crtatmega1284.o
                 0x00000000                __vector_default
                 0x00000000                __vectors
  *(.vectors)
@@ -272,13 +272,13 @@ END GROUP
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x0000008e        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .init0         0x0000008e        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/1.2.193/gcc/dev/atmega1284/avr51/crtatmega1284.o
                 0x0000008e                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x0000008e        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .init2         0x0000008e        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/1.2.193/gcc/dev/atmega1284/avr51/crtatmega1284.o
  *(.init2)
  *(.init3)
  *(.init3)
@@ -299,10 +299,10 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x000000d8        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .init9         0x000000d8        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/1.2.193/gcc/dev/atmega1284/avr51/crtatmega1284.o
  *(.init9)
  *(.text)
- .text          0x000000dc        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .text          0x000000dc        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/1.2.193/gcc/dev/atmega1284/avr51/crtatmega1284.o
                 0x000000dc                __vector_32
                 0x000000dc                __vector_34
                 0x000000dc                __vector_24
@@ -330,7 +330,6 @@ END GROUP
                 0x000000dc                __vector_8
                 0x000000dc                __vector_26
                 0x000000dc                __vector_14
-                0x000000dc                __vector_10
                 0x000000dc                __vector_16
                 0x000000de                . = ALIGN (0x2)
  *(.text.*)
@@ -338,55 +337,58 @@ END GROUP
                 0x000000de       0x3e main.o
                 0x000000de                __vector_1
  .text.__vector_3
-                0x0000011c       0x7c main.o
+                0x0000011c      0x2d0 main.o
                 0x0000011c                __vector_3
  .text.__vector_18
-                0x00000198       0x30 main.o
-                0x00000198                __vector_18
+                0x000003ec       0x30 main.o
+                0x000003ec                __vector_18
+ .text.__vector_10
+                0x0000041c       0x22 main.o
+                0x0000041c                __vector_10
  .text.__vector_28
-                0x000001c8       0x58 main.o
-                0x000001c8                __vector_28
- .text.main     0x00000220      0x242 main.o
-                0x00000220                main
+                0x0000043e       0x7e main.o
+                0x0000043e                __vector_28
+ .text.main     0x000004bc       0xa8 main.o
+                0x000004bc                main
  .text._ZN10RingBufferC2Ev
-                0x00000462        0xc ringbuffer.o
-                0x00000462                _ZN10RingBufferC2Ev
-                0x00000462                _ZN10RingBufferC1Ev
+                0x00000564        0xc ringbuffer.o
+                0x00000564                _ZN10RingBufferC2Ev
+                0x00000564                _ZN10RingBufferC1Ev
  .text._ZN10RingBuffer6InsertEh
-                0x0000046e       0x42 ringbuffer.o
-                0x0000046e                _ZN10RingBuffer6InsertEh
+                0x00000570       0x4e ringbuffer.o
+                0x00000570                _ZN10RingBuffer6InsertEh
  .text._ZN10RingBuffer8RetrieveEPh
-                0x000004b0       0x3c ringbuffer.o
-                0x000004b0                _ZN10RingBuffer8RetrieveEPh
+                0x000005be       0x4e ringbuffer.o
+                0x000005be                _ZN10RingBuffer8RetrieveEPh
  .text._ZN10RingBuffer13BufferIsEmptyEv
-                0x000004ec        0x6 ringbuffer.o
-                0x000004ec                _ZN10RingBuffer13BufferIsEmptyEv
+                0x0000060c        0x6 ringbuffer.o
+                0x0000060c                _ZN10RingBuffer13BufferIsEmptyEv
  .text._Z41__static_initialization_and_destruction_0ii
-                0x000004f2       0x12 XpressNetClient.o
+                0x00000612       0x12 XpressNetClient.o
  .text._Z20XpressNetClientSetupRKh
-                0x00000504       0x50 XpressNetClient.o
-                0x00000504                _Z20XpressNetClientSetupRKh
+                0x00000624       0x50 XpressNetClient.o
+                0x00000624                _Z20XpressNetClientSetupRKh
  .text._Z22XpressNetClientRespondPKh
-                0x00000554       0x4c XpressNetClient.o
-                0x00000554                _Z22XpressNetClientRespondPKh
+                0x00000674       0x4c XpressNetClient.o
+                0x00000674                _Z22XpressNetClientRespondPKh
  .text.__vector_20
-                0x000005a0       0xd8 XpressNetClient.o
-                0x000005a0                __vector_20
+                0x000006c0       0xd8 XpressNetClient.o
+                0x000006c0                __vector_20
  .text.__vector_22
-                0x00000678       0x92 XpressNetClient.o
-                0x00000678                __vector_22
+                0x00000798       0x92 XpressNetClient.o
+                0x00000798                __vector_22
  .text._GLOBAL__sub_I_m_CallByte
-                0x0000070a        0xc XpressNetClient.o
- .text.libgcc   0x00000716       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_tablejump2.o)
-                0x00000716                __tablejump2__
+                0x0000082a        0xc XpressNetClient.o
+ .text.libgcc   0x00000836       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_tablejump2.o)
+                0x00000836                __tablejump2__
  .text.avr-libc
-                0x00000728       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(memcpy.o)
-                0x00000728                memcpy
-                0x0000073a                . = ALIGN (0x2)
+                0x00000848       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(memcpy.o)
+                0x00000848                memcpy
+                0x0000085a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000073a        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
-                0x0000073a                _exit
-                0x0000073a                exit
+ .fini9         0x0000085a        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+                0x0000085a                _exit
+                0x0000085a                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -405,11 +407,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000073a        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .fini0         0x0000085a        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000073e                _etext = .
+                0x0000085e                _etext = .
 
-.data           0x00800100      0x118 load address 0x0000073e
+.data           0x00800100      0x118 load address 0x0000085e
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -425,7 +427,7 @@ END GROUP
                 0x00800218                _edata = .
                 0x00800218                PROVIDE (__data_end, .)
 
-.bss            0x00800218      0x129
+.bss            0x00800218      0x834
                 0x00800218                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
@@ -450,44 +452,56 @@ END GROUP
  .bss.bXpressNetMessageFromHostReady
                 0x0080022d        0x1 main.o
                 0x0080022d                bXpressNetMessageFromHostReady
- .bss.bAddressResponded
+ .bss.bChannel2
                 0x0080022e        0x1 main.o
-                0x0080022e                bAddressResponded
- .bss.bHighAddressValid
+                0x0080022e                bChannel2
+ .bss.bAddressResponded
                 0x0080022f        0x1 main.o
-                0x0080022f                bHighAddressValid
- .bss.bLowAddressValid
+                0x0080022f                bAddressResponded
+ .bss.bHighAddressValid
                 0x00800230        0x1 main.o
-                0x00800230                bLowAddressValid
- .bss.bRxError  0x00800231        0x1 main.o
-                0x00800231                bRxError
- .bss.bRailComDataReady
-                0x00800232        0x1 main.o
-                0x00800232                bRailComDataReady
- .bss.RawRailcomMessage
-                0x00800233        0x8 main.o
-                0x00800233                RawRailcomMessage
- .bss.dataCounter
-                0x0080023b        0x1 main.o
-                0x0080023b                dataCounter
+                0x00800230                bHighAddressValid
+ .bss.bLowAddressValid
+                0x00800231        0x1 main.o
+                0x00800231                bLowAddressValid
+ .bss.bRxError  0x00800232        0x1 main.o
+                0x00800232                bRxError
+ .bss.bCh2RailComDataReady
+                0x00800233        0x1 main.o
+                0x00800233                bCh2RailComDataReady
+ .bss.bCh1RailComDataReady
+                0x00800234        0x1 main.o
+                0x00800234                bCh1RailComDataReady
+ .bss.Ch2RawRailcomMessage
+                0x00800235        0x8 main.o
+                0x00800235                Ch2RawRailcomMessage
+ .bss.Ch2dataCounter
+                0x0080023d        0x1 main.o
+                0x0080023d                Ch2dataCounter
+ .bss.Ch1RawRailcomMessage
+                0x0080023e        0x8 main.o
+                0x0080023e                Ch1RawRailcomMessage
+ .bss.Ch1dataCounter
+                0x00800246        0x1 main.o
+                0x00800246                Ch1dataCounter
  .bss.m_TransmitCounter
-                0x0080023c        0x1 XpressNetClient.o
-                0x0080023c                m_TransmitCounter
- .bss.m_Buffer  0x0080023d      0x103 XpressNetClient.o
-                0x0080023d                m_Buffer
+                0x00800247        0x1 XpressNetClient.o
+                0x00800247                m_TransmitCounter
+ .bss.m_Buffer  0x00800248      0x803 XpressNetClient.o
+                0x00800248                m_Buffer
  .bss.m_CallByte
-                0x00800340        0x1 XpressNetClient.o
-                0x00800340                m_CallByte
+                0x00800a4b        0x1 XpressNetClient.o
+                0x00800a4b                m_CallByte
  *(COMMON)
-                0x00800341                PROVIDE (__bss_end, .)
-                0x0000073e                __data_load_start = LOADADDR (.data)
-                0x00000856                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00800a4c                PROVIDE (__bss_end, .)
+                0x0000085e                __data_load_start = LOADADDR (.data)
+                0x00000976                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800341        0x0
+.noinit         0x00800a4c        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800341                _end = .
+                0x00800a4c                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -537,7 +551,7 @@ END GROUP
 .note.gnu.avr.deviceinfo
                 0x00000000       0x40
  .note.gnu.avr.deviceinfo
-                0x00000000       0x40 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega1284/avr51/crtatmega1284.o
+                0x00000000       0x40 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/1.2.193/gcc/dev/atmega1284/avr51/crtatmega1284.o
 
 .note.gnu.build-id
  *(.note.gnu.build-id)
@@ -554,60 +568,60 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xc8
+.debug_aranges  0x00000000       0xd0
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x40 main.o
+                0x00000000       0x48 main.o
  .debug_aranges
-                0x00000040       0x40 ringbuffer.o
+                0x00000048       0x40 ringbuffer.o
  .debug_aranges
-                0x00000080       0x48 XpressNetClient.o
+                0x00000088       0x48 XpressNetClient.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1475
+.debug_info     0x00000000     0x1584
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x792 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega1284/avr51/crtatmega1284.o
- .debug_info    0x00000792      0x46e main.o
- .debug_info    0x00000c00      0x38b ringbuffer.o
- .debug_info    0x00000f8b      0x4ea XpressNetClient.o
+ .debug_info    0x00000000      0x792 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/1.2.193/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .debug_info    0x00000792      0x539 main.o
+ .debug_info    0x00000ccb      0x3ce ringbuffer.o
+ .debug_info    0x00001099      0x4eb XpressNetClient.o
 
-.debug_abbrev   0x00000000      0xcec
+.debug_abbrev   0x00000000      0xd0e
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x729 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega1284/avr51/crtatmega1284.o
- .debug_abbrev  0x00000729      0x181 main.o
- .debug_abbrev  0x000008aa      0x1e4 ringbuffer.o
- .debug_abbrev  0x00000a8e      0x25e XpressNetClient.o
+ .debug_abbrev  0x00000000      0x729 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/1.2.193/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .debug_abbrev  0x00000729      0x187 main.o
+ .debug_abbrev  0x000008b0      0x200 ringbuffer.o
+ .debug_abbrev  0x00000ab0      0x25e XpressNetClient.o
 
-.debug_line     0x00000000      0xa41
+.debug_line     0x00000000      0xb43
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0x169 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega1284/avr51/crtatmega1284.o
- .debug_line    0x00000169      0x386 main.o
- .debug_line    0x000004ef      0x25f ringbuffer.o
- .debug_line    0x0000074e      0x2f3 XpressNetClient.o
+ .debug_line    0x00000000      0x169 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/1.2.193/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .debug_line    0x00000169      0x446 main.o
+ .debug_line    0x000005af      0x2a1 ringbuffer.o
+ .debug_line    0x00000850      0x2f3 XpressNetClient.o
 
-.debug_frame    0x00000000      0x280
+.debug_frame    0x00000000      0x2ec
  *(.debug_frame)
- .debug_frame   0x00000000       0xdc main.o
- .debug_frame   0x000000dc       0x64 ringbuffer.o
- .debug_frame   0x00000140      0x140 XpressNetClient.o
+ .debug_frame   0x00000000      0x13c main.o
+ .debug_frame   0x0000013c       0x70 ringbuffer.o
+ .debug_frame   0x000001ac      0x140 XpressNetClient.o
 
-.debug_str      0x00000000      0x880
+.debug_str      0x00000000      0x8d7
  *(.debug_str)
- .debug_str     0x00000000      0x296 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.150/gcc/dev/atmega1284/avr51/crtatmega1284.o
- .debug_str     0x00000296      0x39a main.o
-                                0x3e5 (size before relaxing)
- .debug_str     0x00000630      0x170 ringbuffer.o
+ .debug_str     0x00000000      0x296 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/1.2.193/gcc/dev/atmega1284/avr51/crtatmega1284.o
+ .debug_str     0x00000296      0x3f1 main.o
+                                0x42d (size before relaxing)
+ .debug_str     0x00000687      0x170 ringbuffer.o
                                 0x320 (size before relaxing)
- .debug_str     0x000007a0       0xe0 XpressNetClient.o
+ .debug_str     0x000007f7       0xe0 XpressNetClient.o
                                 0x447 (size before relaxing)
 
-.debug_loc      0x00000000      0x75b
+.debug_loc      0x00000000      0x994
  *(.debug_loc)
- .debug_loc     0x00000000      0x212 main.o
- .debug_loc     0x00000212      0x11e ringbuffer.o
- .debug_loc     0x00000330      0x42b XpressNetClient.o
+ .debug_loc     0x00000000      0x38e main.o
+ .debug_loc     0x0000038e      0x1db ringbuffer.o
+ .debug_loc     0x00000569      0x42b XpressNetClient.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -627,11 +641,11 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x108
+.debug_ranges   0x00000000      0x128
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x48 main.o
- .debug_ranges  0x00000048       0x30 ringbuffer.o
- .debug_ranges  0x00000078       0x90 XpressNetClient.o
+ .debug_ranges  0x00000000       0x68 main.o
+ .debug_ranges  0x00000068       0x30 ringbuffer.o
+ .debug_ranges  0x00000098       0x90 XpressNetClient.o
 
 .debug_macro
  *(.debug_macro)

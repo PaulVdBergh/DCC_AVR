@@ -11,7 +11,7 @@
 
 #include <util/atomic.h>
 
-#define  SIZE 256
+#define  SIZE 2048
 
 class RingBuffer
 {

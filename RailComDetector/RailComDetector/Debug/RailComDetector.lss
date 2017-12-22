@@ -3,31 +3,31 @@ RailComDetector.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000118  00800100  0000073e  000007d2  2**0
+  0 .data         00000118  00800100  0000085e  000008f2  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000073e  00000000  00000000  00000094  2**1
+  1 .text         0000085e  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000129  00800218  00800218  000008ea  2**0
+  2 .bss          00000834  00800218  00800218  00000a0a  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000008ea  2**0
+  3 .comment      00000030  00000000  00000000  00000a0a  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000091c  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000a3c  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000000c8  00000000  00000000  0000095c  2**0
+  5 .debug_aranges 000000d0  00000000  00000000  00000a7c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001475  00000000  00000000  00000a24  2**0
+  6 .debug_info   00001584  00000000  00000000  00000b4c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000cec  00000000  00000000  00001e99  2**0
+  7 .debug_abbrev 00000d0e  00000000  00000000  000020d0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000a41  00000000  00000000  00002b85  2**0
+  8 .debug_line   00000b43  00000000  00000000  00002dde  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000280  00000000  00000000  000035c8  2**2
+  9 .debug_frame  000002ec  00000000  00000000  00003924  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000880  00000000  00000000  00003848  2**0
+ 10 .debug_str    000008d7  00000000  00000000  00003c10  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000075b  00000000  00000000  000040c8  2**0
+ 11 .debug_loc    00000994  00000000  00000000  000044e7  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000108  00000000  00000000  00004823  2**0
+ 12 .debug_ranges 00000128  00000000  00000000  00004e7b  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -53,7 +53,7 @@ Disassembly of section .text:
   22:	00 00       	nop
   24:	5b c0       	rjmp	.+182    	; 0xdc <__bad_interrupt>
   26:	00 00       	nop
-  28:	59 c0       	rjmp	.+178    	; 0xdc <__bad_interrupt>
+  28:	f9 c1       	rjmp	.+1010   	; 0x41c <__vector_10>
   2a:	00 00       	nop
   2c:	57 c0       	rjmp	.+174    	; 0xdc <__bad_interrupt>
   2e:	00 00       	nop
@@ -69,15 +69,15 @@ Disassembly of section .text:
   42:	00 00       	nop
   44:	4b c0       	rjmp	.+150    	; 0xdc <__bad_interrupt>
   46:	00 00       	nop
-  48:	a7 c0       	rjmp	.+334    	; 0x198 <__vector_18>
+  48:	d1 c1       	rjmp	.+930    	; 0x3ec <__vector_18>
   4a:	00 00       	nop
   4c:	47 c0       	rjmp	.+142    	; 0xdc <__bad_interrupt>
   4e:	00 00       	nop
-  50:	a7 c2       	rjmp	.+1358   	; 0x5a0 <__vector_20>
+  50:	37 c3       	rjmp	.+1646   	; 0x6c0 <__vector_20>
   52:	00 00       	nop
   54:	43 c0       	rjmp	.+134    	; 0xdc <__bad_interrupt>
   56:	00 00       	nop
-  58:	0f c3       	rjmp	.+1566   	; 0x678 <__vector_22>
+  58:	9f c3       	rjmp	.+1854   	; 0x798 <__vector_22>
   5a:	00 00       	nop
   5c:	3f c0       	rjmp	.+126    	; 0xdc <__bad_interrupt>
   5e:	00 00       	nop
@@ -89,7 +89,7 @@ Disassembly of section .text:
   6a:	00 00       	nop
   6c:	37 c0       	rjmp	.+110    	; 0xdc <__bad_interrupt>
   6e:	00 00       	nop
-  70:	ab c0       	rjmp	.+342    	; 0x1c8 <__vector_28>
+  70:	e6 c1       	rjmp	.+972    	; 0x43e <__vector_28>
   72:	00 00       	nop
   74:	33 c0       	rjmp	.+102    	; 0xdc <__bad_interrupt>
   76:	00 00       	nop
@@ -105,7 +105,7 @@ Disassembly of section .text:
 	...
 
 0000008c <__ctors_start>:
-  8c:	85 03       	fmuls	r16, r21
+  8c:	15 04       	cpc	r1, r5
 
 0000008e <__ctors_end>:
   8e:	11 24       	eor	r1, r1
@@ -119,8 +119,8 @@ Disassembly of section .text:
   9a:	12 e0       	ldi	r17, 0x02	; 2
   9c:	a0 e0       	ldi	r26, 0x00	; 0
   9e:	b1 e0       	ldi	r27, 0x01	; 1
-  a0:	ee e3       	ldi	r30, 0x3E	; 62
-  a2:	f7 e0       	ldi	r31, 0x07	; 7
+  a0:	ee e5       	ldi	r30, 0x5E	; 94
+  a2:	f8 e0       	ldi	r31, 0x08	; 8
   a4:	00 e0       	ldi	r16, 0x00	; 0
   a6:	0b bf       	out	0x3b, r16	; 59
   a8:	02 c0       	rjmp	.+4      	; 0xae <__do_copy_data+0x14>
@@ -131,7 +131,7 @@ Disassembly of section .text:
   b2:	d9 f7       	brne	.-10     	; 0xaa <__do_copy_data+0x10>
 
 000000b4 <__do_clear_bss>:
-  b4:	23 e0       	ldi	r18, 0x03	; 3
+  b4:	2a e0       	ldi	r18, 0x0A	; 10
   b6:	a8 e1       	ldi	r26, 0x18	; 24
   b8:	b2 e0       	ldi	r27, 0x02	; 2
   ba:	01 c0       	rjmp	.+2      	; 0xbe <.do_clear_bss_start>
@@ -140,7 +140,7 @@ Disassembly of section .text:
   bc:	1d 92       	st	X+, r1
 
 000000be <.do_clear_bss_start>:
-  be:	a1 34       	cpi	r26, 0x41	; 65
+  be:	ac 34       	cpi	r26, 0x4C	; 76
   c0:	b2 07       	cpc	r27, r18
   c2:	e1 f7       	brne	.-8      	; 0xbc <.do_clear_bss_loop>
 
@@ -151,12 +151,12 @@ Disassembly of section .text:
   ca:	03 c0       	rjmp	.+6      	; 0xd2 <__do_global_ctors+0xe>
   cc:	21 97       	sbiw	r28, 0x01	; 1
   ce:	fe 01       	movw	r30, r28
-  d0:	22 d3       	rcall	.+1604   	; 0x716 <__tablejump2__>
+  d0:	b2 d3       	rcall	.+1892   	; 0x836 <__tablejump2__>
   d2:	c6 34       	cpi	r28, 0x46	; 70
   d4:	d1 07       	cpc	r29, r17
   d6:	d1 f7       	brne	.-12     	; 0xcc <__do_global_ctors+0x8>
-  d8:	a3 d0       	rcall	.+326    	; 0x220 <main>
-  da:	2f c3       	rjmp	.+1630   	; 0x73a <_exit>
+  d8:	f1 d1       	rcall	.+994    	; 0x4bc <main>
+  da:	bf c3       	rjmp	.+1918   	; 0x85a <_exit>
 
 000000dc <__bad_interrupt>:
   dc:	91 cf       	rjmp	.-222    	; 0x0 <__vectors>
@@ -215,1180 +215,1368 @@ ISR(INT2_vect)	//	RailComGap detection
  124:	11 24       	eor	r1, r1
  126:	0b b6       	in	r0, 0x3b	; 59
  128:	0f 92       	push	r0
- 12a:	8f 93       	push	r24
- 12c:	ef 93       	push	r30
- 12e:	ff 93       	push	r31
+ 12a:	1f 93       	push	r17
+ 12c:	2f 93       	push	r18
+ 12e:	3f 93       	push	r19
+ 130:	4f 93       	push	r20
+ 132:	5f 93       	push	r21
+ 134:	6f 93       	push	r22
+ 136:	7f 93       	push	r23
+ 138:	8f 93       	push	r24
+ 13a:	9f 93       	push	r25
+ 13c:	af 93       	push	r26
+ 13e:	bf 93       	push	r27
+ 140:	ef 93       	push	r30
+ 142:	ff 93       	push	r31
+ 144:	cf 93       	push	r28
+ 146:	df 93       	push	r29
+ 148:	cd b7       	in	r28, 0x3d	; 61
+ 14a:	de b7       	in	r29, 0x3e	; 62
+ 14c:	29 97       	sbiw	r28, 0x09	; 9
+ 14e:	de bf       	out	0x3e, r29	; 62
+ 150:	cd bf       	out	0x3d, r28	; 61
 	if(EICRA & (1 << ISC20))	//	Rising or Falling edge ?
- 130:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <__TEXT_REGION_LENGTH__+0x7e0069>
- 134:	84 ff       	sbrs	r24, 4
- 136:	1c c0       	rjmp	.+56     	; 0x170 <__vector_3+0x54>
+ 152:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <__TEXT_REGION_LENGTH__+0x7e0069>
+ 156:	84 ff       	sbrs	r24, 4
+ 158:	1b c1       	rjmp	.+566    	; 0x390 <__vector_3+0x274>
 	{
 		//	Rising Edge --> End of RailCom Gap
 		EICRA = (2 << ISC20) | (2 << ISC00);	//	INT2 & INT0 falling Edge Interrupt Request
- 138:	82 e2       	ldi	r24, 0x22	; 34
- 13a:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <__TEXT_REGION_LENGTH__+0x7e0069>
+ 15a:	82 e2       	ldi	r24, 0x22	; 34
+ 15c:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <__TEXT_REGION_LENGTH__+0x7e0069>
 		EIMSK = (1 << INT0) | (1 << INT2);		//	External Interrupt Request 2 and 0 Enable
- 13e:	85 e0       	ldi	r24, 0x05	; 5
- 140:	8d bb       	out	0x1d, r24	; 29
+ 160:	85 e0       	ldi	r24, 0x05	; 5
+ 162:	8d bb       	out	0x1d, r24	; 29
 		UCSR1B &= ~(1 << RXEN1);				//	Receiver Disable
- 142:	e9 ec       	ldi	r30, 0xC9	; 201
- 144:	f0 e0       	ldi	r31, 0x00	; 0
- 146:	80 81       	ld	r24, Z
- 148:	8f 7e       	andi	r24, 0xEF	; 239
- 14a:	80 83       	st	Z, r24
-		if (!bRxError && (dataCounter > 0))
- 14c:	80 91 31 02 	lds	r24, 0x0231	; 0x800231 <bRxError>
- 150:	81 11       	cpse	r24, r1
- 152:	05 c0       	rjmp	.+10     	; 0x15e <__vector_3+0x42>
- 154:	80 91 3b 02 	lds	r24, 0x023B	; 0x80023b <dataCounter>
- 158:	81 11       	cpse	r24, r1
- 15a:	03 c0       	rjmp	.+6      	; 0x162 <__vector_3+0x46>
- 15c:	03 c0       	rjmp	.+6      	; 0x164 <__vector_3+0x48>
- 15e:	80 e0       	ldi	r24, 0x00	; 0
- 160:	01 c0       	rjmp	.+2      	; 0x164 <__vector_3+0x48>
- 162:	81 e0       	ldi	r24, 0x01	; 1
- 164:	88 23       	and	r24, r24
- 166:	71 f0       	breq	.+28     	; 0x184 <__vector_3+0x68>
+ 164:	e9 ec       	ldi	r30, 0xC9	; 201
+ 166:	f0 e0       	ldi	r31, 0x00	; 0
+ 168:	80 81       	ld	r24, Z
+ 16a:	8f 7e       	andi	r24, 0xEF	; 239
+ 16c:	80 83       	st	Z, r24
+		
+		if (!bRxError && (Ch2dataCounter > 0))
+ 16e:	80 91 32 02 	lds	r24, 0x0232	; 0x800232 <bRxError>
+ 172:	81 11       	cpse	r24, r1
+ 174:	05 c0       	rjmp	.+10     	; 0x180 <__vector_3+0x64>
+ 176:	80 91 3d 02 	lds	r24, 0x023D	; 0x80023d <Ch2dataCounter>
+ 17a:	81 11       	cpse	r24, r1
+ 17c:	03 c0       	rjmp	.+6      	; 0x184 <__vector_3+0x68>
+ 17e:	03 c0       	rjmp	.+6      	; 0x186 <__vector_3+0x6a>
+ 180:	80 e0       	ldi	r24, 0x00	; 0
+ 182:	01 c0       	rjmp	.+2      	; 0x186 <__vector_3+0x6a>
+ 184:	81 e0       	ldi	r24, 0x01	; 1
+ 186:	88 23       	and	r24, r24
+ 188:	09 f4       	brne	.+2      	; 0x18c <__vector_3+0x70>
+ 18a:	67 c0       	rjmp	.+206    	; 0x25a <__vector_3+0x13e>
 		{
-			bRailComDataReady = true;
- 168:	81 e0       	ldi	r24, 0x01	; 1
- 16a:	80 93 32 02 	sts	0x0232, r24	; 0x800232 <bRailComDataReady>
- 16e:	0a c0       	rjmp	.+20     	; 0x184 <__vector_3+0x68>
+			bCh2RailComDataReady = true;
+ 18c:	81 e0       	ldi	r24, 0x01	; 1
+ 18e:	80 93 33 02 	sts	0x0233, r24	; 0x800233 <bCh2RailComDataReady>
+			
+			memset(RailcomBuffer, 0, 8);
+ 192:	88 e0       	ldi	r24, 0x08	; 8
+ 194:	e5 e2       	ldi	r30, 0x25	; 37
+ 196:	f2 e0       	ldi	r31, 0x02	; 2
+ 198:	df 01       	movw	r26, r30
+ 19a:	28 2f       	mov	r18, r24
+ 19c:	1d 92       	st	X+, r1
+ 19e:	2a 95       	dec	r18
+ 1a0:	e9 f7       	brne	.-6      	; 0x19c <__vector_3+0x80>
+			memset(RailComMessage, 0, 8);
+ 1a2:	ed e1       	ldi	r30, 0x1D	; 29
+ 1a4:	f2 e0       	ldi	r31, 0x02	; 2
+ 1a6:	df 01       	movw	r26, r30
+ 1a8:	1d 92       	st	X+, r1
+ 1aa:	8a 95       	dec	r24
+ 1ac:	e9 f7       	brne	.-6      	; 0x1a8 <__vector_3+0x8c>
+
+//			cli();
+			uint8_t RailcomCount = Ch2dataCounter;
+ 1ae:	10 91 3d 02 	lds	r17, 0x023D	; 0x80023d <Ch2dataCounter>
+			Ch2dataCounter = 0;
+ 1b2:	10 92 3d 02 	sts	0x023D, r1	; 0x80023d <Ch2dataCounter>
+			bCh2RailComDataReady = false;
+ 1b6:	10 92 33 02 	sts	0x0233, r1	; 0x800233 <bCh2RailComDataReady>
+			memcpy(RailcomBuffer, (const void*)Ch2RawRailcomMessage, RailcomCount);
+ 1ba:	41 2f       	mov	r20, r17
+ 1bc:	50 e0       	ldi	r21, 0x00	; 0
+ 1be:	65 e3       	ldi	r22, 0x35	; 53
+ 1c0:	72 e0       	ldi	r23, 0x02	; 2
+ 1c2:	85 e2       	ldi	r24, 0x25	; 37
+ 1c4:	92 e0       	ldi	r25, 0x02	; 2
+ 1c6:	40 d3       	rcall	.+1664   	; 0x848 <memcpy>
+//			sei();
+
+			bool ErrorInFrame = false;
+			for(uint8_t index = 0; index < RailcomCount; index++)
+ 1c8:	20 e0       	ldi	r18, 0x00	; 0
+			Ch2dataCounter = 0;
+			bCh2RailComDataReady = false;
+			memcpy(RailcomBuffer, (const void*)Ch2RawRailcomMessage, RailcomCount);
+//			sei();
+
+			bool ErrorInFrame = false;
+ 1ca:	40 e0       	ldi	r20, 0x00	; 0
+			for(uint8_t index = 0; index < RailcomCount; index++)
+ 1cc:	21 17       	cp	r18, r17
+ 1ce:	98 f4       	brcc	.+38     	; 0x1f6 <__vector_3+0xda>
+			{
+				RailComMessage[index] = RailComEncoding[RailcomBuffer[index]];
+ 1d0:	82 2f       	mov	r24, r18
+ 1d2:	90 e0       	ldi	r25, 0x00	; 0
+ 1d4:	fc 01       	movw	r30, r24
+ 1d6:	eb 5d       	subi	r30, 0xDB	; 219
+ 1d8:	fd 4f       	sbci	r31, 0xFD	; 253
+ 1da:	e0 81       	ld	r30, Z
+ 1dc:	f0 e0       	ldi	r31, 0x00	; 0
+ 1de:	e9 5e       	subi	r30, 0xE9	; 233
+ 1e0:	fe 4f       	sbci	r31, 0xFE	; 254
+ 1e2:	30 81       	ld	r19, Z
+ 1e4:	fc 01       	movw	r30, r24
+ 1e6:	e3 5e       	subi	r30, 0xE3	; 227
+ 1e8:	fd 4f       	sbci	r31, 0xFD	; 253
+ 1ea:	30 83       	st	Z, r19
+				if(RailComMessage[index] & 0x80)
+ 1ec:	33 23       	and	r19, r19
+ 1ee:	0c f4       	brge	.+2      	; 0x1f2 <__vector_3+0xd6>
+				{
+					ErrorInFrame = true;
+ 1f0:	41 e0       	ldi	r20, 0x01	; 1
+			bCh2RailComDataReady = false;
+			memcpy(RailcomBuffer, (const void*)Ch2RawRailcomMessage, RailcomCount);
+//			sei();
+
+			bool ErrorInFrame = false;
+			for(uint8_t index = 0; index < RailcomCount; index++)
+ 1f2:	2f 5f       	subi	r18, 0xFF	; 255
+ 1f4:	eb cf       	rjmp	.-42     	; 0x1cc <__vector_3+0xb0>
+				{
+					ErrorInFrame = true;
+				}
+			}
+					
+			if(!ErrorInFrame)
+ 1f6:	41 11       	cpse	r20, r1
+ 1f8:	30 c0       	rjmp	.+96     	; 0x25a <__vector_3+0x13e>
+			{
+				uint8_t MessageID = (RailComMessage[0] & 0x3C) >> 2;
+ 1fa:	90 91 1d 02 	lds	r25, 0x021D	; 0x80021d <RailComMessage>
+ 1fe:	89 2f       	mov	r24, r25
+ 200:	8c 73       	andi	r24, 0x3C	; 60
+				switch(MessageID)
+ 202:	59 f5       	brne	.+86     	; 0x25a <__vector_3+0x13e>
+				{
+					case 0:		//	Channel 2 POM
+					{
+						uint8_t message[] = {0x09, 0x76, 0xE1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+ 204:	89 e0       	ldi	r24, 0x09	; 9
+ 206:	e0 e0       	ldi	r30, 0x00	; 0
+ 208:	f1 e0       	ldi	r31, 0x01	; 1
+ 20a:	de 01       	movw	r26, r28
+ 20c:	11 96       	adiw	r26, 0x01	; 1
+ 20e:	01 90       	ld	r0, Z+
+ 210:	0d 92       	st	X+, r0
+ 212:	8a 95       	dec	r24
+ 214:	e1 f7       	brne	.-8      	; 0x20e <__vector_3+0xf2>
+						if(bHighAddressValid && bLowAddressValid)
+ 216:	80 91 30 02 	lds	r24, 0x0230	; 0x800230 <bHighAddressValid>
+ 21a:	88 23       	and	r24, r24
+ 21c:	19 f0       	breq	.+6      	; 0x224 <__vector_3+0x108>
+ 21e:	80 91 31 02 	lds	r24, 0x0231	; 0x800231 <bLowAddressValid>
+ 222:	01 c0       	rjmp	.+2      	; 0x226 <__vector_3+0x10a>
+ 224:	80 e0       	ldi	r24, 0x00	; 0
+ 226:	88 23       	and	r24, r24
+ 228:	31 f0       	breq	.+12     	; 0x236 <__vector_3+0x11a>
+						{
+							message[3] = MyAddress.AddrHigh;
+ 22a:	eb e1       	ldi	r30, 0x1B	; 27
+ 22c:	f2 e0       	ldi	r31, 0x02	; 2
+ 22e:	80 81       	ld	r24, Z
+ 230:	8c 83       	std	Y+4, r24	; 0x04
+							message[4] = MyAddress.AddrLow;
+ 232:	81 81       	ldd	r24, Z+1	; 0x01
+ 234:	8d 83       	std	Y+5, r24	; 0x05
+						}
+						message[7] = ((RailComMessage[0] & 0x03) << 6) + (RailComMessage[1] & 0x3F);
+ 236:	80 91 1e 02 	lds	r24, 0x021E	; 0x80021e <RailComMessage+0x1>
+ 23a:	8f 73       	andi	r24, 0x3F	; 63
+ 23c:	b0 e4       	ldi	r27, 0x40	; 64
+ 23e:	9b 9f       	mul	r25, r27
+ 240:	80 0d       	add	r24, r0
+ 242:	11 24       	eor	r1, r1
+ 244:	88 87       	std	Y+8, r24	; 0x08
+						message[8] = message[1] ^ message[2] ^ message[3] ^ message[4] ^ message[5] ^ message[6] ^ message[7];
+ 246:	3c 81       	ldd	r19, Y+4	; 0x04
+ 248:	2d 81       	ldd	r18, Y+5	; 0x05
+ 24a:	97 e9       	ldi	r25, 0x97	; 151
+ 24c:	93 27       	eor	r25, r19
+ 24e:	92 27       	eor	r25, r18
+ 250:	89 27       	eor	r24, r25
+ 252:	89 87       	std	Y+9, r24	; 0x09
+						XpressNetClientRespond(message);
+ 254:	ce 01       	movw	r24, r28
+ 256:	01 96       	adiw	r24, 0x01	; 1
+ 258:	0d d2       	rcall	.+1050   	; 0x674 <_Z22XpressNetClientRespondPKh>
+					}
+				}
+			}	//	!ErrorInFrame
+		}
+	
+		if (!bRxError && (Ch1dataCounter > 0))
+ 25a:	80 91 32 02 	lds	r24, 0x0232	; 0x800232 <bRxError>
+ 25e:	81 11       	cpse	r24, r1
+ 260:	05 c0       	rjmp	.+10     	; 0x26c <__vector_3+0x150>
+ 262:	80 91 46 02 	lds	r24, 0x0246	; 0x800246 <Ch1dataCounter>
+ 266:	81 11       	cpse	r24, r1
+ 268:	03 c0       	rjmp	.+6      	; 0x270 <__vector_3+0x154>
+ 26a:	03 c0       	rjmp	.+6      	; 0x272 <__vector_3+0x156>
+ 26c:	80 e0       	ldi	r24, 0x00	; 0
+ 26e:	01 c0       	rjmp	.+2      	; 0x272 <__vector_3+0x156>
+ 270:	81 e0       	ldi	r24, 0x01	; 1
+ 272:	88 23       	and	r24, r24
+ 274:	09 f4       	brne	.+2      	; 0x278 <__vector_3+0x15c>
+ 276:	9e c0       	rjmp	.+316    	; 0x3b4 <__vector_3+0x298>
+		{
+			bCh1RailComDataReady = true;
+ 278:	81 e0       	ldi	r24, 0x01	; 1
+ 27a:	80 93 34 02 	sts	0x0234, r24	; 0x800234 <bCh1RailComDataReady>
+		
+			memset(RailcomBuffer, 0, 8);
+ 27e:	88 e0       	ldi	r24, 0x08	; 8
+ 280:	e5 e2       	ldi	r30, 0x25	; 37
+ 282:	f2 e0       	ldi	r31, 0x02	; 2
+ 284:	df 01       	movw	r26, r30
+ 286:	28 2f       	mov	r18, r24
+ 288:	1d 92       	st	X+, r1
+ 28a:	2a 95       	dec	r18
+ 28c:	e9 f7       	brne	.-6      	; 0x288 <__vector_3+0x16c>
+			memset(RailComMessage, 0, 8);
+ 28e:	ed e1       	ldi	r30, 0x1D	; 29
+ 290:	f2 e0       	ldi	r31, 0x02	; 2
+ 292:	df 01       	movw	r26, r30
+ 294:	1d 92       	st	X+, r1
+ 296:	8a 95       	dec	r24
+ 298:	e9 f7       	brne	.-6      	; 0x294 <__vector_3+0x178>
+
+			//			cli();
+			uint8_t RailcomCount = Ch1dataCounter;
+ 29a:	10 91 46 02 	lds	r17, 0x0246	; 0x800246 <Ch1dataCounter>
+			Ch1dataCounter = 0;
+ 29e:	10 92 46 02 	sts	0x0246, r1	; 0x800246 <Ch1dataCounter>
+			bCh1RailComDataReady = false;
+ 2a2:	10 92 34 02 	sts	0x0234, r1	; 0x800234 <bCh1RailComDataReady>
+			memcpy(RailcomBuffer, (const void*)Ch1RawRailcomMessage, RailcomCount);
+ 2a6:	41 2f       	mov	r20, r17
+ 2a8:	50 e0       	ldi	r21, 0x00	; 0
+ 2aa:	6e e3       	ldi	r22, 0x3E	; 62
+ 2ac:	72 e0       	ldi	r23, 0x02	; 2
+ 2ae:	85 e2       	ldi	r24, 0x25	; 37
+ 2b0:	92 e0       	ldi	r25, 0x02	; 2
+ 2b2:	ca d2       	rcall	.+1428   	; 0x848 <memcpy>
+			//			sei();
+
+			bool ErrorInFrame = false;
+			for(uint8_t index = 0; index < RailcomCount; index++)
+ 2b4:	20 e0       	ldi	r18, 0x00	; 0
+			Ch1dataCounter = 0;
+			bCh1RailComDataReady = false;
+			memcpy(RailcomBuffer, (const void*)Ch1RawRailcomMessage, RailcomCount);
+			//			sei();
+
+			bool ErrorInFrame = false;
+ 2b6:	40 e0       	ldi	r20, 0x00	; 0
+			for(uint8_t index = 0; index < RailcomCount; index++)
+ 2b8:	21 17       	cp	r18, r17
+ 2ba:	98 f4       	brcc	.+38     	; 0x2e2 <__vector_3+0x1c6>
+			{
+				RailComMessage[index] = RailComEncoding[RailcomBuffer[index]];
+ 2bc:	82 2f       	mov	r24, r18
+ 2be:	90 e0       	ldi	r25, 0x00	; 0
+ 2c0:	fc 01       	movw	r30, r24
+ 2c2:	eb 5d       	subi	r30, 0xDB	; 219
+ 2c4:	fd 4f       	sbci	r31, 0xFD	; 253
+ 2c6:	e0 81       	ld	r30, Z
+ 2c8:	f0 e0       	ldi	r31, 0x00	; 0
+ 2ca:	e9 5e       	subi	r30, 0xE9	; 233
+ 2cc:	fe 4f       	sbci	r31, 0xFE	; 254
+ 2ce:	30 81       	ld	r19, Z
+ 2d0:	fc 01       	movw	r30, r24
+ 2d2:	e3 5e       	subi	r30, 0xE3	; 227
+ 2d4:	fd 4f       	sbci	r31, 0xFD	; 253
+ 2d6:	30 83       	st	Z, r19
+				if(RailComMessage[index] & 0x80)
+ 2d8:	33 23       	and	r19, r19
+ 2da:	0c f4       	brge	.+2      	; 0x2de <__vector_3+0x1c2>
+				{
+					ErrorInFrame = true;
+ 2dc:	41 e0       	ldi	r20, 0x01	; 1
+			bCh1RailComDataReady = false;
+			memcpy(RailcomBuffer, (const void*)Ch1RawRailcomMessage, RailcomCount);
+			//			sei();
+
+			bool ErrorInFrame = false;
+			for(uint8_t index = 0; index < RailcomCount; index++)
+ 2de:	2f 5f       	subi	r18, 0xFF	; 255
+ 2e0:	eb cf       	rjmp	.-42     	; 0x2b8 <__vector_3+0x19c>
+				{
+					ErrorInFrame = true;
+				}
+			}
+		
+			if(!ErrorInFrame)
+ 2e2:	41 11       	cpse	r20, r1
+ 2e4:	67 c0       	rjmp	.+206    	; 0x3b4 <__vector_3+0x298>
+			{
+				uint8_t MessageID = (RailComMessage[0] & 0x3C) >> 2;
+ 2e6:	20 91 1d 02 	lds	r18, 0x021D	; 0x80021d <RailComMessage>
+ 2ea:	82 2f       	mov	r24, r18
+ 2ec:	8c 73       	andi	r24, 0x3C	; 60
+ 2ee:	90 e0       	ldi	r25, 0x00	; 0
+				switch(MessageID)
+ 2f0:	96 95       	lsr	r25
+ 2f2:	87 95       	ror	r24
+ 2f4:	96 95       	lsr	r25
+ 2f6:	87 95       	ror	r24
+ 2f8:	81 30       	cpi	r24, 0x01	; 1
+ 2fa:	91 05       	cpc	r25, r1
+ 2fc:	19 f0       	breq	.+6      	; 0x304 <__vector_3+0x1e8>
+ 2fe:	02 97       	sbiw	r24, 0x02	; 2
+ 300:	71 f0       	breq	.+28     	; 0x31e <__vector_3+0x202>
+ 302:	19 c0       	rjmp	.+50     	; 0x336 <__vector_3+0x21a>
+				{
+					case 1:		//	app:adr_low
+					{
+						MyAddress.AddrLow = ((RailComMessage[0] & 0x03) << 6) + (RailComMessage[1] & 0x3F);
+ 304:	80 91 1e 02 	lds	r24, 0x021E	; 0x80021e <RailComMessage+0x1>
+ 308:	8f 73       	andi	r24, 0x3F	; 63
+ 30a:	b0 e4       	ldi	r27, 0x40	; 64
+ 30c:	2b 9f       	mul	r18, r27
+ 30e:	80 0d       	add	r24, r0
+ 310:	11 24       	eor	r1, r1
+ 312:	80 93 1c 02 	sts	0x021C, r24	; 0x80021c <MyAddress+0x1>
+						bLowAddressValid = true;
+ 316:	81 e0       	ldi	r24, 0x01	; 1
+ 318:	80 93 31 02 	sts	0x0231, r24	; 0x800231 <bLowAddressValid>
+						break;
+ 31c:	0c c0       	rjmp	.+24     	; 0x336 <__vector_3+0x21a>
+					}
+				
+					case 2:		//	app:adr_high
+					{
+						MyAddress.AddrHigh = ((RailComMessage[0] & 0x03) << 6) + (RailComMessage[1] & 0x3F);
+ 31e:	80 91 1e 02 	lds	r24, 0x021E	; 0x80021e <RailComMessage+0x1>
+ 322:	8f 73       	andi	r24, 0x3F	; 63
+ 324:	90 e4       	ldi	r25, 0x40	; 64
+ 326:	29 9f       	mul	r18, r25
+ 328:	80 0d       	add	r24, r0
+ 32a:	11 24       	eor	r1, r1
+ 32c:	80 93 1b 02 	sts	0x021B, r24	; 0x80021b <MyAddress>
+						bHighAddressValid = true;
+ 330:	81 e0       	ldi	r24, 0x01	; 1
+ 332:	80 93 30 02 	sts	0x0230, r24	; 0x800230 <bHighAddressValid>
+					{
+					
+					}
+				}
+			
+				if((true == bHighAddressValid) && (true == bLowAddressValid) && (false == bAddressResponded))
+ 336:	80 91 30 02 	lds	r24, 0x0230	; 0x800230 <bHighAddressValid>
+ 33a:	88 23       	and	r24, r24
+ 33c:	51 f0       	breq	.+20     	; 0x352 <__vector_3+0x236>
+ 33e:	80 91 31 02 	lds	r24, 0x0231	; 0x800231 <bLowAddressValid>
+ 342:	88 23       	and	r24, r24
+ 344:	41 f0       	breq	.+16     	; 0x356 <__vector_3+0x23a>
+ 346:	90 91 2f 02 	lds	r25, 0x022F	; 0x80022f <bAddressResponded>
+ 34a:	99 23       	and	r25, r25
+ 34c:	29 f0       	breq	.+10     	; 0x358 <__vector_3+0x23c>
+ 34e:	80 e0       	ldi	r24, 0x00	; 0
+ 350:	03 c0       	rjmp	.+6      	; 0x358 <__vector_3+0x23c>
+ 352:	80 e0       	ldi	r24, 0x00	; 0
+ 354:	01 c0       	rjmp	.+2      	; 0x358 <__vector_3+0x23c>
+ 356:	80 e0       	ldi	r24, 0x00	; 0
+ 358:	88 23       	and	r24, r24
+ 35a:	61 f1       	breq	.+88     	; 0x3b4 <__vector_3+0x298>
+				{
+					//	Send new address to master
+					uint8_t msg[] = {0x08, 0x75, 0xF2, 0x00, 0x01, 0x00, 0x00, 0x00 };
+ 35c:	88 e0       	ldi	r24, 0x08	; 8
+ 35e:	e9 e0       	ldi	r30, 0x09	; 9
+ 360:	f1 e0       	ldi	r31, 0x01	; 1
+ 362:	de 01       	movw	r26, r28
+ 364:	11 96       	adiw	r26, 0x01	; 1
+ 366:	01 90       	ld	r0, Z+
+ 368:	0d 92       	st	X+, r0
+ 36a:	8a 95       	dec	r24
+ 36c:	e1 f7       	brne	.-8      	; 0x366 <__vector_3+0x24a>
+				
+					msg[5] = MyAddress.AddrHigh;
+ 36e:	eb e1       	ldi	r30, 0x1B	; 27
+ 370:	f2 e0       	ldi	r31, 0x02	; 2
+ 372:	20 81       	ld	r18, Z
+ 374:	2e 83       	std	Y+6, r18	; 0x06
+					msg[6] = MyAddress.AddrLow;
+ 376:	81 81       	ldd	r24, Z+1	; 0x01
+ 378:	8f 83       	std	Y+7, r24	; 0x07
+					msg[7] = msg[1] ^ msg[2] ^ msg[3] ^ msg[4] ^ msg[5] ^ msg[6];
+ 37a:	96 e8       	ldi	r25, 0x86	; 134
+ 37c:	92 27       	eor	r25, r18
+ 37e:	89 27       	eor	r24, r25
+				
+					XpressNetClientRespond(msg);
+ 380:	88 87       	std	Y+8, r24	; 0x08
+ 382:	ce 01       	movw	r24, r28
+ 384:	01 96       	adiw	r24, 0x01	; 1
+ 386:	76 d1       	rcall	.+748    	; 0x674 <_Z22XpressNetClientRespondPKh>
+				
+					bAddressResponded = true;
+ 388:	81 e0       	ldi	r24, 0x01	; 1
+ 38a:	80 93 2f 02 	sts	0x022F, r24	; 0x80022f <bAddressResponded>
+ 38e:	12 c0       	rjmp	.+36     	; 0x3b4 <__vector_3+0x298>
 		}
 	}
 	else
 	{
 		//	Falling Edge --> Start of RailCom Gap
 		bRxError = false;
- 170:	10 92 31 02 	sts	0x0231, r1	; 0x800231 <bRxError>
+ 390:	10 92 32 02 	sts	0x0232, r1	; 0x800232 <bRxError>
 		EICRA = (3 << ISC20);					//	INT2 Rising Edge Interrupt Request
- 174:	80 e3       	ldi	r24, 0x30	; 48
- 176:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <__TEXT_REGION_LENGTH__+0x7e0069>
+ 394:	80 e3       	ldi	r24, 0x30	; 48
+ 396:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <__TEXT_REGION_LENGTH__+0x7e0069>
 		EIMSK = (1 << INT2);					//	this clears INT0 Interrupt enable mask
- 17a:	84 e0       	ldi	r24, 0x04	; 4
- 17c:	8d bb       	out	0x1d, r24	; 29
-		UCSR1B = (1 << RXCIE1) | (1 << RXEN1);	// Receiver Enable, RX Complete Interrupt Enable
- 17e:	80 e9       	ldi	r24, 0x90	; 144
- 180:	80 93 c9 00 	sts	0x00C9, r24	; 0x8000c9 <__TEXT_REGION_LENGTH__+0x7e00c9>
+ 39a:	84 e0       	ldi	r24, 0x04	; 4
+ 39c:	8d bb       	out	0x1d, r24	; 29
+		UCSR1B = (1 << RXCIE1) | (1 << RXEN1);	//	Receiver Enable, RX Complete Interrupt Enable
+ 39e:	90 e9       	ldi	r25, 0x90	; 144
+ 3a0:	90 93 c9 00 	sts	0x00C9, r25	; 0x8000c9 <__TEXT_REGION_LENGTH__+0x7e00c9>
+		
+		bChannel2 = false;
+ 3a4:	10 92 2e 02 	sts	0x022E, r1	; 0x80022e <bChannel2>
+		TIFR2 = 0xFF;							//	Clear all pending interrupts for TC2
+ 3a8:	9f ef       	ldi	r25, 0xFF	; 255
+ 3aa:	97 bb       	out	0x17, r25	; 23
+		TIMSK2 = (1 << OCIE2B);					//	Timer/Counter2 Output Compare Match B Interrupt Enable
+ 3ac:	80 93 70 00 	sts	0x0070, r24	; 0x800070 <__TEXT_REGION_LENGTH__+0x7e0070>
+		TCNT2 = 0;								//	Start new delay
+ 3b0:	10 92 b2 00 	sts	0x00B2, r1	; 0x8000b2 <__TEXT_REGION_LENGTH__+0x7e00b2>
 	}
 }
- 184:	ff 91       	pop	r31
- 186:	ef 91       	pop	r30
- 188:	8f 91       	pop	r24
- 18a:	0f 90       	pop	r0
- 18c:	0b be       	out	0x3b, r0	; 59
- 18e:	0f 90       	pop	r0
- 190:	0f be       	out	0x3f, r0	; 63
- 192:	0f 90       	pop	r0
- 194:	1f 90       	pop	r1
- 196:	18 95       	reti
+ 3b4:	29 96       	adiw	r28, 0x09	; 9
+ 3b6:	0f b6       	in	r0, 0x3f	; 63
+ 3b8:	f8 94       	cli
+ 3ba:	de bf       	out	0x3e, r29	; 62
+ 3bc:	0f be       	out	0x3f, r0	; 63
+ 3be:	cd bf       	out	0x3d, r28	; 61
+ 3c0:	df 91       	pop	r29
+ 3c2:	cf 91       	pop	r28
+ 3c4:	ff 91       	pop	r31
+ 3c6:	ef 91       	pop	r30
+ 3c8:	bf 91       	pop	r27
+ 3ca:	af 91       	pop	r26
+ 3cc:	9f 91       	pop	r25
+ 3ce:	8f 91       	pop	r24
+ 3d0:	7f 91       	pop	r23
+ 3d2:	6f 91       	pop	r22
+ 3d4:	5f 91       	pop	r21
+ 3d6:	4f 91       	pop	r20
+ 3d8:	3f 91       	pop	r19
+ 3da:	2f 91       	pop	r18
+ 3dc:	1f 91       	pop	r17
+ 3de:	0f 90       	pop	r0
+ 3e0:	0b be       	out	0x3b, r0	; 59
+ 3e2:	0f 90       	pop	r0
+ 3e4:	0f be       	out	0x3f, r0	; 63
+ 3e6:	0f 90       	pop	r0
+ 3e8:	1f 90       	pop	r1
+ 3ea:	18 95       	reti
 
-00000198 <__vector_18>:
+000003ec <__vector_18>:
 
 ISR(TIMER0_OVF_vect)	//	Occupancy detection timeout : enter idle state
 {
- 198:	1f 92       	push	r1
- 19a:	0f 92       	push	r0
- 19c:	0f b6       	in	r0, 0x3f	; 63
- 19e:	0f 92       	push	r0
- 1a0:	11 24       	eor	r1, r1
- 1a2:	8f 93       	push	r24
+ 3ec:	1f 92       	push	r1
+ 3ee:	0f 92       	push	r0
+ 3f0:	0f b6       	in	r0, 0x3f	; 63
+ 3f2:	0f 92       	push	r0
+ 3f4:	11 24       	eor	r1, r1
+ 3f6:	8f 93       	push	r24
 	TIFR0 = 0xFF;	//	Clear all pending interrupts
- 1a4:	8f ef       	ldi	r24, 0xFF	; 255
- 1a6:	85 bb       	out	0x15, r24	; 21
+ 3f8:	8f ef       	ldi	r24, 0xFF	; 255
+ 3fa:	85 bb       	out	0x15, r24	; 21
 	TIMSK0 = 0;		//	Disable further interrupts from timer
- 1a8:	10 92 6e 00 	sts	0x006E, r1	; 0x80006e <__TEXT_REGION_LENGTH__+0x7e006e>
+ 3fc:	10 92 6e 00 	sts	0x006E, r1	; 0x80006e <__TEXT_REGION_LENGTH__+0x7e006e>
 	bOccupied = false;
- 1ac:	10 92 1a 02 	sts	0x021A, r1	; 0x80021a <bOccupied>
+ 400:	10 92 1a 02 	sts	0x021A, r1	; 0x80021a <bOccupied>
 	bHighAddressValid = false;
- 1b0:	10 92 2f 02 	sts	0x022F, r1	; 0x80022f <bHighAddressValid>
+ 404:	10 92 30 02 	sts	0x0230, r1	; 0x800230 <bHighAddressValid>
 	bLowAddressValid = false;
- 1b4:	10 92 30 02 	sts	0x0230, r1	; 0x800230 <bLowAddressValid>
+ 408:	10 92 31 02 	sts	0x0231, r1	; 0x800231 <bLowAddressValid>
 	bAddressResponded = false;
- 1b8:	10 92 2e 02 	sts	0x022E, r1	; 0x80022e <bAddressResponded>
+ 40c:	10 92 2f 02 	sts	0x022F, r1	; 0x80022f <bAddressResponded>
 }
- 1bc:	8f 91       	pop	r24
- 1be:	0f 90       	pop	r0
- 1c0:	0f be       	out	0x3f, r0	; 63
- 1c2:	0f 90       	pop	r0
- 1c4:	1f 90       	pop	r1
- 1c6:	18 95       	reti
+ 410:	8f 91       	pop	r24
+ 412:	0f 90       	pop	r0
+ 414:	0f be       	out	0x3f, r0	; 63
+ 416:	0f 90       	pop	r0
+ 418:	1f 90       	pop	r1
+ 41a:	18 95       	reti
 
-000001c8 <__vector_28>:
+0000041c <__vector_10>:
+
+ISR(TIMER2_COMPB_vect)
+{
+ 41c:	1f 92       	push	r1
+ 41e:	0f 92       	push	r0
+ 420:	0f b6       	in	r0, 0x3f	; 63
+ 422:	0f 92       	push	r0
+ 424:	11 24       	eor	r1, r1
+ 426:	8f 93       	push	r24
+	bChannel2 = true;
+ 428:	81 e0       	ldi	r24, 0x01	; 1
+ 42a:	80 93 2e 02 	sts	0x022E, r24	; 0x80022e <bChannel2>
+	TIMSK2 = 0;			//	Disable further interrupts from timer
+ 42e:	10 92 70 00 	sts	0x0070, r1	; 0x800070 <__TEXT_REGION_LENGTH__+0x7e0070>
+}
+ 432:	8f 91       	pop	r24
+ 434:	0f 90       	pop	r0
+ 436:	0f be       	out	0x3f, r0	; 63
+ 438:	0f 90       	pop	r0
+ 43a:	1f 90       	pop	r1
+ 43c:	18 95       	reti
+
+0000043e <__vector_28>:
 
 ISR(USART1_RX_vect)
 {
- 1c8:	1f 92       	push	r1
- 1ca:	0f 92       	push	r0
- 1cc:	0f b6       	in	r0, 0x3f	; 63
- 1ce:	0f 92       	push	r0
- 1d0:	11 24       	eor	r1, r1
- 1d2:	0b b6       	in	r0, 0x3b	; 59
- 1d4:	0f 92       	push	r0
- 1d6:	8f 93       	push	r24
- 1d8:	9f 93       	push	r25
- 1da:	ef 93       	push	r30
- 1dc:	ff 93       	push	r31
+ 43e:	1f 92       	push	r1
+ 440:	0f 92       	push	r0
+ 442:	0f b6       	in	r0, 0x3f	; 63
+ 444:	0f 92       	push	r0
+ 446:	11 24       	eor	r1, r1
+ 448:	0b b6       	in	r0, 0x3b	; 59
+ 44a:	0f 92       	push	r0
+ 44c:	8f 93       	push	r24
+ 44e:	9f 93       	push	r25
+ 450:	ef 93       	push	r30
+ 452:	ff 93       	push	r31
 	uint8_t RxErrors = UCSR1A & ((1 << FE1) | (1 << DOR1) | (1 << UPE1));
- 1de:	80 91 c8 00 	lds	r24, 0x00C8	; 0x8000c8 <__TEXT_REGION_LENGTH__+0x7e00c8>
- 1e2:	8c 71       	andi	r24, 0x1C	; 28
-	RawRailcomMessage[dataCounter++] = UDR1;
- 1e4:	e0 91 3b 02 	lds	r30, 0x023B	; 0x80023b <dataCounter>
- 1e8:	91 e0       	ldi	r25, 0x01	; 1
- 1ea:	9e 0f       	add	r25, r30
- 1ec:	90 93 3b 02 	sts	0x023B, r25	; 0x80023b <dataCounter>
- 1f0:	f0 e0       	ldi	r31, 0x00	; 0
- 1f2:	90 91 ce 00 	lds	r25, 0x00CE	; 0x8000ce <__TEXT_REGION_LENGTH__+0x7e00ce>
- 1f6:	ed 5c       	subi	r30, 0xCD	; 205
- 1f8:	fd 4f       	sbci	r31, 0xFD	; 253
- 1fa:	90 83       	st	Z, r25
+ 454:	80 91 c8 00 	lds	r24, 0x00C8	; 0x8000c8 <__TEXT_REGION_LENGTH__+0x7e00c8>
+ 458:	8c 71       	andi	r24, 0x1C	; 28
+	if(bChannel2)
+ 45a:	90 91 2e 02 	lds	r25, 0x022E	; 0x80022e <bChannel2>
+ 45e:	99 23       	and	r25, r25
+ 460:	69 f0       	breq	.+26     	; 0x47c <__vector_28+0x3e>
+	{
+		Ch2RawRailcomMessage[Ch2dataCounter++] = UDR1;
+ 462:	e0 91 3d 02 	lds	r30, 0x023D	; 0x80023d <Ch2dataCounter>
+ 466:	91 e0       	ldi	r25, 0x01	; 1
+ 468:	9e 0f       	add	r25, r30
+ 46a:	90 93 3d 02 	sts	0x023D, r25	; 0x80023d <Ch2dataCounter>
+ 46e:	f0 e0       	ldi	r31, 0x00	; 0
+ 470:	90 91 ce 00 	lds	r25, 0x00CE	; 0x8000ce <__TEXT_REGION_LENGTH__+0x7e00ce>
+ 474:	eb 5c       	subi	r30, 0xCB	; 203
+ 476:	fd 4f       	sbci	r31, 0xFD	; 253
+ 478:	90 83       	st	Z, r25
+ 47a:	0c c0       	rjmp	.+24     	; 0x494 <__vector_28+0x56>
+	}
+	else
+	{
+		Ch1RawRailcomMessage[Ch1dataCounter++] = UDR1;
+ 47c:	e0 91 46 02 	lds	r30, 0x0246	; 0x800246 <Ch1dataCounter>
+ 480:	91 e0       	ldi	r25, 0x01	; 1
+ 482:	9e 0f       	add	r25, r30
+ 484:	90 93 46 02 	sts	0x0246, r25	; 0x800246 <Ch1dataCounter>
+ 488:	f0 e0       	ldi	r31, 0x00	; 0
+ 48a:	90 91 ce 00 	lds	r25, 0x00CE	; 0x8000ce <__TEXT_REGION_LENGTH__+0x7e00ce>
+ 48e:	e2 5c       	subi	r30, 0xC2	; 194
+ 490:	fd 4f       	sbci	r31, 0xFD	; 253
+ 492:	90 83       	st	Z, r25
+	}
 	
 	if(RxErrors)
- 1fc:	88 23       	and	r24, r24
- 1fe:	29 f0       	breq	.+10     	; 0x20a <__vector_28+0x42>
+ 494:	88 23       	and	r24, r24
+ 496:	39 f0       	breq	.+14     	; 0x4a6 <__vector_28+0x68>
 	{
-		dataCounter = 0;
- 200:	10 92 3b 02 	sts	0x023B, r1	; 0x80023b <dataCounter>
+		Ch1dataCounter = Ch2dataCounter = 0;
+ 498:	10 92 3d 02 	sts	0x023D, r1	; 0x80023d <Ch2dataCounter>
+ 49c:	10 92 46 02 	sts	0x0246, r1	; 0x800246 <Ch1dataCounter>
 		bRxError = true;
- 204:	81 e0       	ldi	r24, 0x01	; 1
- 206:	80 93 31 02 	sts	0x0231, r24	; 0x800231 <bRxError>
+ 4a0:	81 e0       	ldi	r24, 0x01	; 1
+ 4a2:	80 93 32 02 	sts	0x0232, r24	; 0x800232 <bRxError>
 	}
 }
- 20a:	ff 91       	pop	r31
- 20c:	ef 91       	pop	r30
- 20e:	9f 91       	pop	r25
- 210:	8f 91       	pop	r24
- 212:	0f 90       	pop	r0
- 214:	0b be       	out	0x3b, r0	; 59
- 216:	0f 90       	pop	r0
- 218:	0f be       	out	0x3f, r0	; 63
- 21a:	0f 90       	pop	r0
- 21c:	1f 90       	pop	r1
- 21e:	18 95       	reti
+ 4a6:	ff 91       	pop	r31
+ 4a8:	ef 91       	pop	r30
+ 4aa:	9f 91       	pop	r25
+ 4ac:	8f 91       	pop	r24
+ 4ae:	0f 90       	pop	r0
+ 4b0:	0b be       	out	0x3b, r0	; 59
+ 4b2:	0f 90       	pop	r0
+ 4b4:	0f be       	out	0x3f, r0	; 63
+ 4b6:	0f 90       	pop	r0
+ 4b8:	1f 90       	pop	r1
+ 4ba:	18 95       	reti
 
-00000220 <main>:
+000004bc <main>:
 
 uint8_t resetSource = 0;
 
 int main(void)
 {
- 220:	cf 93       	push	r28
- 222:	df 93       	push	r29
- 224:	cd b7       	in	r28, 0x3d	; 61
- 226:	de b7       	in	r29, 0x3e	; 62
- 228:	2a 97       	sbiw	r28, 0x0a	; 10
- 22a:	0f b6       	in	r0, 0x3f	; 63
- 22c:	f8 94       	cli
- 22e:	de bf       	out	0x3e, r29	; 62
- 230:	0f be       	out	0x3f, r0	; 63
- 232:	cd bf       	out	0x3d, r28	; 61
+ 4bc:	cf 93       	push	r28
+ 4be:	df 93       	push	r29
+ 4c0:	cd b7       	in	r28, 0x3d	; 61
+ 4c2:	de b7       	in	r29, 0x3e	; 62
+ 4c4:	27 97       	sbiw	r28, 0x07	; 7
+ 4c6:	0f b6       	in	r0, 0x3f	; 63
+ 4c8:	f8 94       	cli
+ 4ca:	de bf       	out	0x3e, r29	; 62
+ 4cc:	0f be       	out	0x3f, r0	; 63
+ 4ce:	cd bf       	out	0x3d, r28	; 61
 	resetSource = MCUSR;
- 234:	84 b7       	in	r24, 0x34	; 52
- 236:	80 93 18 02 	sts	0x0218, r24	; 0x800218 <__data_end>
+ 4d0:	84 b7       	in	r24, 0x34	; 52
+ 4d2:	80 93 18 02 	sts	0x0218, r24	; 0x800218 <__data_end>
 	MCUSR = 0;
- 23a:	14 be       	out	0x34, r1	; 52
+ 4d6:	14 be       	out	0x34, r1	; 52
 	
 	EICRA = (2 << ISC20) | (2 << ISC00);	//	INT2 and INT0 falling Edge Interrupt Request
- 23c:	82 e2       	ldi	r24, 0x22	; 34
- 23e:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <__TEXT_REGION_LENGTH__+0x7e0069>
+ 4d8:	82 e2       	ldi	r24, 0x22	; 34
+ 4da:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <__TEXT_REGION_LENGTH__+0x7e0069>
 	EIMSK = (1 << INT2) | (1 << INT0);	//	External Interrupt Request 2 and 0 Enable
- 242:	85 e0       	ldi	r24, 0x05	; 5
- 244:	8d bb       	out	0x1d, r24	; 29
+ 4de:	85 e0       	ldi	r24, 0x05	; 5
+ 4e0:	8d bb       	out	0x1d, r24	; 29
 
 	
 	//	USART1 Initialization (RailCom)
 	UBRR1 = (F_CPU / (16 * RAILCOM_BAUDRATE)) - 1;	//	Baudrate
- 246:	24 e0       	ldi	r18, 0x04	; 4
- 248:	30 e0       	ldi	r19, 0x00	; 0
- 24a:	30 93 cd 00 	sts	0x00CD, r19	; 0x8000cd <__TEXT_REGION_LENGTH__+0x7e00cd>
- 24e:	20 93 cc 00 	sts	0x00CC, r18	; 0x8000cc <__TEXT_REGION_LENGTH__+0x7e00cc>
+ 4e2:	24 e0       	ldi	r18, 0x04	; 4
+ 4e4:	30 e0       	ldi	r19, 0x00	; 0
+ 4e6:	30 93 cd 00 	sts	0x00CD, r19	; 0x8000cd <__TEXT_REGION_LENGTH__+0x7e00cd>
+ 4ea:	20 93 cc 00 	sts	0x00CC, r18	; 0x8000cc <__TEXT_REGION_LENGTH__+0x7e00cc>
 	UCSR1C = (3 << UCSZ10);	//	8-bit Data Size, No Parity, 1 Stop-bit
- 252:	96 e0       	ldi	r25, 0x06	; 6
- 254:	90 93 ca 00 	sts	0x00CA, r25	; 0x8000ca <__TEXT_REGION_LENGTH__+0x7e00ca>
+ 4ee:	96 e0       	ldi	r25, 0x06	; 6
+ 4f0:	90 93 ca 00 	sts	0x00CA, r25	; 0x8000ca <__TEXT_REGION_LENGTH__+0x7e00ca>
 	
 	//	TimerCounter0 Initialization (Occupancy Detection)
-	TCCR0B = (5 << CS00);	//	1024 prescaller
- 258:	85 bd       	out	0x25, r24	; 37
+	TCCR0B = (5 << CS00);	//	1024 x prescaling
+ 4f4:	85 bd       	out	0x25, r24	; 37
 	TIMSK0 = (1 << TOIE0);	//	Enable TCO overflow interrupt
- 25a:	81 e0       	ldi	r24, 0x01	; 1
- 25c:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <__TEXT_REGION_LENGTH__+0x7e006e>
+ 4f6:	81 e0       	ldi	r24, 0x01	; 1
+ 4f8:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <__TEXT_REGION_LENGTH__+0x7e006e>
+	
+	//	TimerCounter2 Initialization (RailCom channel1/channel2)
+	TCCR2B = (3 << CS20);	//	32 x prescaling
+ 4fc:	83 e0       	ldi	r24, 0x03	; 3
+ 4fe:	80 93 b1 00 	sts	0x00B1, r24	; 0x8000b1 <__TEXT_REGION_LENGTH__+0x7e00b1>
+	TCCR2A = (3 << COM2B0);	//	normal counter mode, set OC2B on Compare Match
+ 502:	80 e3       	ldi	r24, 0x30	; 48
+ 504:	80 93 b0 00 	sts	0x00B0, r24	; 0x8000b0 <__TEXT_REGION_LENGTH__+0x7e00b0>
+	OCR2B  = 104;			//	167µS delay
+ 508:	88 e6       	ldi	r24, 0x68	; 104
+ 50a:	80 93 b4 00 	sts	0x00B4, r24	; 0x8000b4 <__TEXT_REGION_LENGTH__+0x7e00b4>
+	
 
 	XpressNetClientSetup(XPRESSNETADDRESS);
- 260:	8f e1       	ldi	r24, 0x1F	; 31
- 262:	89 83       	std	Y+1, r24	; 0x01
- 264:	ce 01       	movw	r24, r28
- 266:	01 96       	adiw	r24, 0x01	; 1
- 268:	4d d1       	rcall	.+666    	; 0x504 <_Z20XpressNetClientSetupRKh>
+ 50e:	8f e1       	ldi	r24, 0x1F	; 31
+ 510:	89 83       	std	Y+1, r24	; 0x01
+ 512:	ce 01       	movw	r24, r28
+ 514:	01 96       	adiw	r24, 0x01	; 1
+ 516:	86 d0       	rcall	.+268    	; 0x624 <_Z20XpressNetClientSetupRKh>
 	
 	sei();	//	Enable Global Interrupts
- 26a:	78 94       	sei
+ 518:	78 94       	sei
 		
     while (1) 
     {
 		if(bOccupied != bPreviousOccupied)
- 26c:	90 91 1a 02 	lds	r25, 0x021A	; 0x80021a <bOccupied>
- 270:	80 91 19 02 	lds	r24, 0x0219	; 0x800219 <bPreviousOccupied>
- 274:	98 17       	cp	r25, r24
- 276:	e1 f0       	breq	.+56     	; 0x2b0 <main+0x90>
+ 51a:	90 91 1a 02 	lds	r25, 0x021A	; 0x80021a <bOccupied>
+ 51e:	80 91 19 02 	lds	r24, 0x0219	; 0x800219 <bPreviousOccupied>
+ 522:	98 17       	cp	r25, r24
+ 524:	e1 f0       	breq	.+56     	; 0x55e <main+0xa2>
 		{
 			bPreviousOccupied = bOccupied;
- 278:	80 91 1a 02 	lds	r24, 0x021A	; 0x80021a <bOccupied>
- 27c:	80 93 19 02 	sts	0x0219, r24	; 0x800219 <bPreviousOccupied>
+ 526:	80 91 1a 02 	lds	r24, 0x021A	; 0x80021a <bOccupied>
+ 52a:	80 93 19 02 	sts	0x0219, r24	; 0x800219 <bPreviousOccupied>
 			uint8_t IdleMessage[] = {0x6, 0x73, 0xF0, 0x00, 0x01, 0x00};
- 280:	86 e0       	ldi	r24, 0x06	; 6
- 282:	e0 e0       	ldi	r30, 0x00	; 0
- 284:	f1 e0       	ldi	r31, 0x01	; 1
- 286:	de 01       	movw	r26, r28
- 288:	12 96       	adiw	r26, 0x02	; 2
- 28a:	01 90       	ld	r0, Z+
- 28c:	0d 92       	st	X+, r0
- 28e:	8a 95       	dec	r24
- 290:	e1 f7       	brne	.-8      	; 0x28a <main+0x6a>
+ 52e:	86 e0       	ldi	r24, 0x06	; 6
+ 530:	e1 e1       	ldi	r30, 0x11	; 17
+ 532:	f1 e0       	ldi	r31, 0x01	; 1
+ 534:	de 01       	movw	r26, r28
+ 536:	12 96       	adiw	r26, 0x02	; 2
+ 538:	01 90       	ld	r0, Z+
+ 53a:	0d 92       	st	X+, r0
+ 53c:	8a 95       	dec	r24
+ 53e:	e1 f7       	brne	.-8      	; 0x538 <main+0x7c>
 				
 			if(bOccupied)
- 292:	80 91 1a 02 	lds	r24, 0x021A	; 0x80021a <bOccupied>
- 296:	88 23       	and	r24, r24
- 298:	11 f0       	breq	.+4      	; 0x29e <main+0x7e>
+ 540:	80 91 1a 02 	lds	r24, 0x021A	; 0x80021a <bOccupied>
+ 544:	88 23       	and	r24, r24
+ 546:	11 f0       	breq	.+4      	; 0x54c <main+0x90>
 			{
 				IdleMessage[2] = 0xF1;
- 29a:	81 ef       	ldi	r24, 0xF1	; 241
- 29c:	8c 83       	std	Y+4, r24	; 0x04
+ 548:	81 ef       	ldi	r24, 0xF1	; 241
+ 54a:	8c 83       	std	Y+4, r24	; 0x04
 			}
 			
 			IdleMessage[5] = IdleMessage[1] ^ IdleMessage[2] ^ IdleMessage[3] ^ IdleMessage[4];
- 29e:	9c 81       	ldd	r25, Y+4	; 0x04
- 2a0:	83 e7       	ldi	r24, 0x73	; 115
- 2a2:	89 27       	eor	r24, r25
- 2a4:	91 e0       	ldi	r25, 0x01	; 1
- 2a6:	89 27       	eor	r24, r25
- 2a8:	8f 83       	std	Y+7, r24	; 0x07
+ 54c:	9c 81       	ldd	r25, Y+4	; 0x04
+ 54e:	83 e7       	ldi	r24, 0x73	; 115
+ 550:	89 27       	eor	r24, r25
+ 552:	91 e0       	ldi	r25, 0x01	; 1
+ 554:	89 27       	eor	r24, r25
+ 556:	8f 83       	std	Y+7, r24	; 0x07
 			XpressNetClientRespond(IdleMessage);
- 2aa:	ce 01       	movw	r24, r28
- 2ac:	02 96       	adiw	r24, 0x02	; 2
- 2ae:	52 d1       	rcall	.+676    	; 0x554 <_Z22XpressNetClientRespondPKh>
+ 558:	ce 01       	movw	r24, r28
+ 55a:	02 96       	adiw	r24, 0x02	; 2
+ 55c:	8b d0       	rcall	.+278    	; 0x674 <_Z22XpressNetClientRespondPKh>
 			
 		}	//	new occupancy state
 		
 		if(bXpressNetMessageFromHostReady)
- 2b0:	80 91 2d 02 	lds	r24, 0x022D	; 0x80022d <bXpressNetMessageFromHostReady>
-		{
-			
-		}	//	bXpressNetMessageReady
-		
-		if(bRailComDataReady)
- 2b4:	80 91 32 02 	lds	r24, 0x0232	; 0x800232 <bRailComDataReady>
- 2b8:	88 23       	and	r24, r24
- 2ba:	c1 f2       	breq	.-80     	; 0x26c <main+0x4c>
-		{
+ 55e:	80 91 2d 02 	lds	r24, 0x022D	; 0x80022d <bXpressNetMessageFromHostReady>
+ 562:	db cf       	rjmp	.-74     	; 0x51a <main+0x5e>
 
-			memset(RailcomBuffer, 0, 8);
- 2bc:	88 e0       	ldi	r24, 0x08	; 8
- 2be:	e5 e2       	ldi	r30, 0x25	; 37
- 2c0:	f2 e0       	ldi	r31, 0x02	; 2
- 2c2:	df 01       	movw	r26, r30
- 2c4:	28 2f       	mov	r18, r24
- 2c6:	1d 92       	st	X+, r1
- 2c8:	2a 95       	dec	r18
- 2ca:	e9 f7       	brne	.-6      	; 0x2c6 <main+0xa6>
-			memset(RailComMessage, 0, 8);
- 2cc:	ed e1       	ldi	r30, 0x1D	; 29
- 2ce:	f2 e0       	ldi	r31, 0x02	; 2
- 2d0:	df 01       	movw	r26, r30
- 2d2:	1d 92       	st	X+, r1
- 2d4:	8a 95       	dec	r24
- 2d6:	e9 f7       	brne	.-6      	; 0x2d2 <main+0xb2>
-
-			cli();
- 2d8:	f8 94       	cli
-			uint8_t RailcomCount = dataCounter;
- 2da:	f0 90 3b 02 	lds	r15, 0x023B	; 0x80023b <dataCounter>
-			dataCounter = 0;
- 2de:	10 92 3b 02 	sts	0x023B, r1	; 0x80023b <dataCounter>
-			bRailComDataReady = false;
- 2e2:	10 92 32 02 	sts	0x0232, r1	; 0x800232 <bRailComDataReady>
-			memcpy(RailcomBuffer, (const void*)RawRailcomMessage, RailcomCount);
- 2e6:	0f 2d       	mov	r16, r15
- 2e8:	10 e0       	ldi	r17, 0x00	; 0
- 2ea:	a8 01       	movw	r20, r16
- 2ec:	63 e3       	ldi	r22, 0x33	; 51
- 2ee:	72 e0       	ldi	r23, 0x02	; 2
- 2f0:	85 e2       	ldi	r24, 0x25	; 37
- 2f2:	92 e0       	ldi	r25, 0x02	; 2
- 2f4:	19 d2       	rcall	.+1074   	; 0x728 <memcpy>
-			sei();
- 2f6:	78 94       	sei
-
-			bool ErrorInFrame = false;
-			for(uint8_t index = 0; index < RailcomCount; index++)
- 2f8:	20 e0       	ldi	r18, 0x00	; 0
-			dataCounter = 0;
-			bRailComDataReady = false;
-			memcpy(RailcomBuffer, (const void*)RawRailcomMessage, RailcomCount);
-			sei();
-
-			bool ErrorInFrame = false;
- 2fa:	40 e0       	ldi	r20, 0x00	; 0
-			for(uint8_t index = 0; index < RailcomCount; index++)
- 2fc:	2f 15       	cp	r18, r15
- 2fe:	98 f4       	brcc	.+38     	; 0x326 <main+0x106>
-			{
-				RailComMessage[index] = RailComEncoding[RailcomBuffer[index]];
- 300:	82 2f       	mov	r24, r18
- 302:	90 e0       	ldi	r25, 0x00	; 0
- 304:	fc 01       	movw	r30, r24
- 306:	eb 5d       	subi	r30, 0xDB	; 219
- 308:	fd 4f       	sbci	r31, 0xFD	; 253
- 30a:	e0 81       	ld	r30, Z
- 30c:	f0 e0       	ldi	r31, 0x00	; 0
- 30e:	e9 5e       	subi	r30, 0xE9	; 233
- 310:	fe 4f       	sbci	r31, 0xFE	; 254
- 312:	30 81       	ld	r19, Z
- 314:	fc 01       	movw	r30, r24
- 316:	e3 5e       	subi	r30, 0xE3	; 227
- 318:	fd 4f       	sbci	r31, 0xFD	; 253
- 31a:	30 83       	st	Z, r19
-				if(RailComMessage[index] & 0x80)
- 31c:	33 23       	and	r19, r19
- 31e:	0c f4       	brge	.+2      	; 0x322 <main+0x102>
-				{
-					ErrorInFrame = true;
- 320:	41 e0       	ldi	r20, 0x01	; 1
-			bRailComDataReady = false;
-			memcpy(RailcomBuffer, (const void*)RawRailcomMessage, RailcomCount);
-			sei();
-
-			bool ErrorInFrame = false;
-			for(uint8_t index = 0; index < RailcomCount; index++)
- 322:	2f 5f       	subi	r18, 0xFF	; 255
- 324:	eb cf       	rjmp	.-42     	; 0x2fc <main+0xdc>
-				}
-			}
-			
-			uint8_t* pRailComMessage = RailComMessage;
-		
-			if(!ErrorInFrame)
- 326:	41 11       	cpse	r20, r1
- 328:	a1 cf       	rjmp	.-190    	; 0x26c <main+0x4c>
- 32a:	0f 2e       	mov	r0, r31
- 32c:	fd e1       	ldi	r31, 0x1D	; 29
- 32e:	ef 2e       	mov	r14, r31
- 330:	f2 e0       	ldi	r31, 0x02	; 2
- 332:	ff 2e       	mov	r15, r31
- 334:	f0 2d       	mov	r31, r0
-			{
-				do		//	VERIFY THIS DO ... WHILE loop!! (untested - 28/11/2017)
-				{
-					uint8_t MessageID = (pRailComMessage[0] & 0x3C) >> 2;
- 336:	f7 01       	movw	r30, r14
- 338:	20 81       	ld	r18, Z
- 33a:	82 2f       	mov	r24, r18
- 33c:	8c 73       	andi	r24, 0x3C	; 60
- 33e:	90 e0       	ldi	r25, 0x00	; 0
-					switch(MessageID)
- 340:	96 95       	lsr	r25
- 342:	87 95       	ror	r24
- 344:	96 95       	lsr	r25
- 346:	87 95       	ror	r24
- 348:	81 30       	cpi	r24, 0x01	; 1
- 34a:	91 05       	cpc	r25, r1
- 34c:	c1 f1       	breq	.+112    	; 0x3be <main+0x19e>
- 34e:	82 30       	cpi	r24, 0x02	; 2
- 350:	91 05       	cpc	r25, r1
- 352:	09 f4       	brne	.+2      	; 0x356 <main+0x136>
- 354:	43 c0       	rjmp	.+134    	; 0x3dc <main+0x1bc>
- 356:	89 2b       	or	r24, r25
- 358:	09 f0       	breq	.+2      	; 0x35c <main+0x13c>
- 35a:	4e c0       	rjmp	.+156    	; 0x3f8 <main+0x1d8>
-					{
-						case 0:		//	Channel 2 POM
-						{
-							uint8_t message[] = {0x09, 0x76, 0xE1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
- 35c:	89 e0       	ldi	r24, 0x09	; 9
- 35e:	e6 e0       	ldi	r30, 0x06	; 6
- 360:	f1 e0       	ldi	r31, 0x01	; 1
- 362:	de 01       	movw	r26, r28
- 364:	12 96       	adiw	r26, 0x02	; 2
- 366:	01 90       	ld	r0, Z+
- 368:	0d 92       	st	X+, r0
- 36a:	8a 95       	dec	r24
- 36c:	e1 f7       	brne	.-8      	; 0x366 <main+0x146>
-							if(bHighAddressValid && bLowAddressValid)
- 36e:	80 91 2f 02 	lds	r24, 0x022F	; 0x80022f <bHighAddressValid>
- 372:	88 23       	and	r24, r24
- 374:	19 f0       	breq	.+6      	; 0x37c <main+0x15c>
- 376:	80 91 30 02 	lds	r24, 0x0230	; 0x800230 <bLowAddressValid>
- 37a:	01 c0       	rjmp	.+2      	; 0x37e <main+0x15e>
- 37c:	80 e0       	ldi	r24, 0x00	; 0
- 37e:	88 23       	and	r24, r24
- 380:	31 f0       	breq	.+12     	; 0x38e <main+0x16e>
-							{
-								message[3] = MyAddress.AddrHigh;
- 382:	eb e1       	ldi	r30, 0x1B	; 27
- 384:	f2 e0       	ldi	r31, 0x02	; 2
- 386:	80 81       	ld	r24, Z
- 388:	8d 83       	std	Y+5, r24	; 0x05
-								message[4] = MyAddress.AddrLow;
- 38a:	81 81       	ldd	r24, Z+1	; 0x01
- 38c:	8e 83       	std	Y+6, r24	; 0x06
-							}
-							message[7] = ((pRailComMessage[0] & 0x03) << 6) + (pRailComMessage[1] & 0x3F);
- 38e:	d7 01       	movw	r26, r14
- 390:	9c 91       	ld	r25, X
- 392:	11 96       	adiw	r26, 0x01	; 1
- 394:	8c 91       	ld	r24, X
- 396:	8f 73       	andi	r24, 0x3F	; 63
- 398:	b0 e4       	ldi	r27, 0x40	; 64
- 39a:	9b 9f       	mul	r25, r27
- 39c:	80 0d       	add	r24, r0
- 39e:	11 24       	eor	r1, r1
- 3a0:	89 87       	std	Y+9, r24	; 0x09
-							message[8] = message[1] ^ message[2] ^ message[3] ^ message[4] ^ message[5] ^ message[6] ^ message[7];
- 3a2:	3d 81       	ldd	r19, Y+5	; 0x05
- 3a4:	2e 81       	ldd	r18, Y+6	; 0x06
- 3a6:	97 e9       	ldi	r25, 0x97	; 151
- 3a8:	93 27       	eor	r25, r19
- 3aa:	92 27       	eor	r25, r18
- 3ac:	89 27       	eor	r24, r25
-							XpressNetClientRespond(message);
- 3ae:	8a 87       	std	Y+10, r24	; 0x0a
- 3b0:	ce 01       	movw	r24, r28
- 3b2:	02 96       	adiw	r24, 0x02	; 2
- 3b4:	cf d0       	rcall	.+414    	; 0x554 <_Z22XpressNetClientRespondPKh>
-							pRailComMessage += 2;
- 3b6:	e2 e0       	ldi	r30, 0x02	; 2
- 3b8:	ee 0e       	add	r14, r30
- 3ba:	f1 1c       	adc	r15, r1
- 3bc:	1d c0       	rjmp	.+58     	; 0x3f8 <main+0x1d8>
-							break;
-						}
-				
-						case 1:		//	app:adr_low
-						{
-							MyAddress.AddrLow = ((pRailComMessage[0] & 0x03) << 6) + (pRailComMessage[1] & 0x3F);
- 3be:	81 81       	ldd	r24, Z+1	; 0x01
- 3c0:	8f 73       	andi	r24, 0x3F	; 63
- 3c2:	b0 e4       	ldi	r27, 0x40	; 64
- 3c4:	2b 9f       	mul	r18, r27
- 3c6:	80 0d       	add	r24, r0
- 3c8:	11 24       	eor	r1, r1
- 3ca:	80 93 1c 02 	sts	0x021C, r24	; 0x80021c <MyAddress+0x1>
-							pRailComMessage += 2;
- 3ce:	e2 e0       	ldi	r30, 0x02	; 2
- 3d0:	ee 0e       	add	r14, r30
- 3d2:	f1 1c       	adc	r15, r1
-							bLowAddressValid = true;
- 3d4:	81 e0       	ldi	r24, 0x01	; 1
- 3d6:	80 93 30 02 	sts	0x0230, r24	; 0x800230 <bLowAddressValid>
-							break;
- 3da:	0e c0       	rjmp	.+28     	; 0x3f8 <main+0x1d8>
-						}
-				
-						case 2:		//	app:adr_high
-						{
-							MyAddress.AddrHigh = ((pRailComMessage[0] & 0x03) << 6) + (pRailComMessage[1] & 0x3F);
- 3dc:	81 81       	ldd	r24, Z+1	; 0x01
- 3de:	8f 73       	andi	r24, 0x3F	; 63
- 3e0:	b0 e4       	ldi	r27, 0x40	; 64
- 3e2:	2b 9f       	mul	r18, r27
- 3e4:	80 0d       	add	r24, r0
- 3e6:	11 24       	eor	r1, r1
- 3e8:	80 93 1b 02 	sts	0x021B, r24	; 0x80021b <MyAddress>
-							pRailComMessage += 2;
- 3ec:	e2 e0       	ldi	r30, 0x02	; 2
- 3ee:	ee 0e       	add	r14, r30
- 3f0:	f1 1c       	adc	r15, r1
-							bHighAddressValid = true;
- 3f2:	81 e0       	ldi	r24, 0x01	; 1
- 3f4:	80 93 2f 02 	sts	0x022F, r24	; 0x80022f <bHighAddressValid>
-						{
-							//	Move pRailComMessage beyond &RailComMessage[RailcomCount), to avoid endless loop.
-						}
-					}
-				} 
-				while(pRailComMessage < RailComMessage + RailcomCount);
- 3f8:	c8 01       	movw	r24, r16
- 3fa:	83 5e       	subi	r24, 0xE3	; 227
- 3fc:	9d 4f       	sbci	r25, 0xFD	; 253
- 3fe:	e8 16       	cp	r14, r24
- 400:	f9 06       	cpc	r15, r25
- 402:	08 f4       	brcc	.+2      	; 0x406 <__LOCK_REGION_LENGTH__+0x6>
- 404:	98 cf       	rjmp	.-208    	; 0x336 <main+0x116>
-				
-				if((true == bHighAddressValid) && (true == bLowAddressValid) && (false == bAddressResponded))
- 406:	80 91 2f 02 	lds	r24, 0x022F	; 0x80022f <bHighAddressValid>
- 40a:	88 23       	and	r24, r24
- 40c:	51 f0       	breq	.+20     	; 0x422 <__LOCK_REGION_LENGTH__+0x22>
- 40e:	80 91 30 02 	lds	r24, 0x0230	; 0x800230 <bLowAddressValid>
- 412:	88 23       	and	r24, r24
- 414:	41 f0       	breq	.+16     	; 0x426 <__LOCK_REGION_LENGTH__+0x26>
- 416:	90 91 2e 02 	lds	r25, 0x022E	; 0x80022e <bAddressResponded>
- 41a:	99 23       	and	r25, r25
- 41c:	29 f0       	breq	.+10     	; 0x428 <__LOCK_REGION_LENGTH__+0x28>
- 41e:	80 e0       	ldi	r24, 0x00	; 0
- 420:	03 c0       	rjmp	.+6      	; 0x428 <__LOCK_REGION_LENGTH__+0x28>
- 422:	80 e0       	ldi	r24, 0x00	; 0
- 424:	01 c0       	rjmp	.+2      	; 0x428 <__LOCK_REGION_LENGTH__+0x28>
- 426:	80 e0       	ldi	r24, 0x00	; 0
- 428:	88 23       	and	r24, r24
- 42a:	09 f4       	brne	.+2      	; 0x42e <__LOCK_REGION_LENGTH__+0x2e>
- 42c:	1f cf       	rjmp	.-450    	; 0x26c <main+0x4c>
-				{
-					//	Send new address to master
-					uint8_t msg[] = {0x08, 0x75, 0xF2, 0x00, 0x01, 0x00, 0x00, 0x00 };
- 42e:	88 e0       	ldi	r24, 0x08	; 8
- 430:	ef e0       	ldi	r30, 0x0F	; 15
- 432:	f1 e0       	ldi	r31, 0x01	; 1
- 434:	de 01       	movw	r26, r28
- 436:	12 96       	adiw	r26, 0x02	; 2
- 438:	01 90       	ld	r0, Z+
- 43a:	0d 92       	st	X+, r0
- 43c:	8a 95       	dec	r24
- 43e:	e1 f7       	brne	.-8      	; 0x438 <__LOCK_REGION_LENGTH__+0x38>
-						
-					msg[5] = MyAddress.AddrHigh;
- 440:	eb e1       	ldi	r30, 0x1B	; 27
- 442:	f2 e0       	ldi	r31, 0x02	; 2
- 444:	20 81       	ld	r18, Z
- 446:	2f 83       	std	Y+7, r18	; 0x07
-					msg[6] = MyAddress.AddrLow;
- 448:	81 81       	ldd	r24, Z+1	; 0x01
- 44a:	88 87       	std	Y+8, r24	; 0x08
-					msg[7] = msg[1] ^ msg[2] ^ msg[3] ^ msg[4] ^ msg[5] ^ msg[6];
- 44c:	96 e8       	ldi	r25, 0x86	; 134
- 44e:	92 27       	eor	r25, r18
- 450:	89 27       	eor	r24, r25
-					
-					XpressNetClientRespond(msg);
- 452:	89 87       	std	Y+9, r24	; 0x09
- 454:	ce 01       	movw	r24, r28
- 456:	02 96       	adiw	r24, 0x02	; 2
- 458:	7d d0       	rcall	.+250    	; 0x554 <_Z22XpressNetClientRespondPKh>
-					
-					bAddressResponded = true;
- 45a:	81 e0       	ldi	r24, 0x01	; 1
- 45c:	80 93 2e 02 	sts	0x022E, r24	; 0x80022e <bAddressResponded>
- 460:	05 cf       	rjmp	.-502    	; 0x26c <main+0x4c>
-
-00000462 <_ZN10RingBufferC1Ev>:
+00000564 <_ZN10RingBufferC1Ev>:
  *  Author: VdBer
  */ 
 
 #include "ringbuffer.h"
 
 RingBuffer::RingBuffer()
- 462:	fc 01       	movw	r30, r24
+ 564:	fc 01       	movw	r30, r24
 :	m_iBegin(0),
 	m_iEnd(0),
 	m_bEmpty(true)
- 464:	10 82       	st	Z, r1
- 466:	11 82       	std	Z+1, r1	; 0x01
- 468:	81 e0       	ldi	r24, 0x01	; 1
- 46a:	82 83       	std	Z+2, r24	; 0x02
- 46c:	08 95       	ret
+ 566:	10 82       	st	Z, r1
+ 568:	11 82       	std	Z+1, r1	; 0x01
+ 56a:	81 e0       	ldi	r24, 0x01	; 1
+ 56c:	82 83       	std	Z+2, r24	; 0x02
+ 56e:	08 95       	ret
 
-0000046e <_ZN10RingBuffer6InsertEh>:
+00000570 <_ZN10RingBuffer6InsertEh>:
 {
 }
 
 RingBuffer::BufferStatus RingBuffer::Insert(uint8_t data)
 {
- 46e:	fc 01       	movw	r30, r24
+ 570:	fc 01       	movw	r30, r24
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
- 470:	9f b7       	in	r25, 0x3f	; 63
+ 572:	2f b7       	in	r18, 0x3f	; 63
     return 1;
 }
 
 static __inline__ uint8_t __iCliRetVal(void)
 {
     cli();
- 472:	f8 94       	cli
+ 574:	f8 94       	cli
+ 576:	81 e0       	ldi	r24, 0x01	; 1
+ 578:	88 23       	and	r24, r24
+ 57a:	f1 f0       	breq	.+60     	; 0x5b8 <_ZN10RingBuffer6InsertEh+0x48>
 	{
 		if((m_iEnd == m_iBegin) && !m_bEmpty)
- 474:	21 81       	ldd	r18, Z+1	; 0x01
- 476:	80 81       	ld	r24, Z
- 478:	28 13       	cpse	r18, r24
- 47a:	05 c0       	rjmp	.+10     	; 0x486 <_ZN10RingBuffer6InsertEh+0x18>
- 47c:	82 81       	ldd	r24, Z+2	; 0x02
- 47e:	88 23       	and	r24, r24
- 480:	21 f0       	breq	.+8      	; 0x48a <_ZN10RingBuffer6InsertEh+0x1c>
- 482:	80 e0       	ldi	r24, 0x00	; 0
- 484:	03 c0       	rjmp	.+6      	; 0x48c <_ZN10RingBuffer6InsertEh+0x1e>
- 486:	80 e0       	ldi	r24, 0x00	; 0
- 488:	01 c0       	rjmp	.+2      	; 0x48c <_ZN10RingBuffer6InsertEh+0x1e>
- 48a:	81 e0       	ldi	r24, 0x01	; 1
- 48c:	81 11       	cpse	r24, r1
- 48e:	0d c0       	rjmp	.+26     	; 0x4aa <_ZN10RingBuffer6InsertEh+0x3c>
-		return BufferFull;
-
-		m_pBuffer[m_iEnd++] = data;
- 490:	81 81       	ldd	r24, Z+1	; 0x01
- 492:	21 e0       	ldi	r18, 0x01	; 1
- 494:	28 0f       	add	r18, r24
- 496:	21 83       	std	Z+1, r18	; 0x01
- 498:	df 01       	movw	r26, r30
- 49a:	a8 0f       	add	r26, r24
- 49c:	b1 1d       	adc	r27, r1
- 49e:	13 96       	adiw	r26, 0x03	; 3
- 4a0:	6c 93       	st	X, r22
-
-		if(m_iEnd > SIZE - 1)
- 4a2:	81 81       	ldd	r24, Z+1	; 0x01
-		m_iEnd = 0;
-
-		m_bEmpty = false;
- 4a4:	12 82       	std	Z+2, r1	; 0x02
-		
-		return Success;
- 4a6:	80 e0       	ldi	r24, 0x00	; 0
- 4a8:	01 c0       	rjmp	.+2      	; 0x4ac <_ZN10RingBuffer6InsertEh+0x3e>
-RingBuffer::BufferStatus RingBuffer::Insert(uint8_t data)
-{
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
-	{
-		if((m_iEnd == m_iBegin) && !m_bEmpty)
-		return BufferFull;
- 4aa:	81 e0       	ldi	r24, 0x01	; 1
+ 57c:	91 81       	ldd	r25, Z+1	; 0x01
+ 57e:	80 81       	ld	r24, Z
+ 580:	98 13       	cpse	r25, r24
+ 582:	05 c0       	rjmp	.+10     	; 0x58e <_ZN10RingBuffer6InsertEh+0x1e>
+ 584:	82 81       	ldd	r24, Z+2	; 0x02
+ 586:	88 23       	and	r24, r24
+ 588:	21 f0       	breq	.+8      	; 0x592 <_ZN10RingBuffer6InsertEh+0x22>
+ 58a:	80 e0       	ldi	r24, 0x00	; 0
+ 58c:	03 c0       	rjmp	.+6      	; 0x594 <_ZN10RingBuffer6InsertEh+0x24>
+ 58e:	80 e0       	ldi	r24, 0x00	; 0
+ 590:	01 c0       	rjmp	.+2      	; 0x594 <_ZN10RingBuffer6InsertEh+0x24>
+ 592:	81 e0       	ldi	r24, 0x01	; 1
+ 594:	88 23       	and	r24, r24
+ 596:	19 f0       	breq	.+6      	; 0x59e <_ZN10RingBuffer6InsertEh+0x2e>
     (void)__s;
 }
 
 static __inline__ void __iRestore(const  uint8_t *__s)
 {
     SREG = *__s;
- 4ac:	9f bf       	out	0x3f, r25	; 63
+ 598:	2f bf       	out	0x3f, r18	; 63
+		return BufferFull;
+ 59a:	81 e0       	ldi	r24, 0x01	; 1
+ 59c:	08 95       	ret
+
+		m_pBuffer[m_iEnd++] = data;
+ 59e:	81 81       	ldd	r24, Z+1	; 0x01
+ 5a0:	91 e0       	ldi	r25, 0x01	; 1
+ 5a2:	98 0f       	add	r25, r24
+ 5a4:	91 83       	std	Z+1, r25	; 0x01
+ 5a6:	df 01       	movw	r26, r30
+ 5a8:	a8 0f       	add	r26, r24
+ 5aa:	b1 1d       	adc	r27, r1
+ 5ac:	13 96       	adiw	r26, 0x03	; 3
+ 5ae:	6c 93       	st	X, r22
+
+		if(m_iEnd > SIZE - 1)
+ 5b0:	81 81       	ldd	r24, Z+1	; 0x01
+		m_iEnd = 0;
 
 		m_bEmpty = false;
-		
-		return Success;
-	}
+ 5b2:	12 82       	std	Z+2, r1	; 0x02
+{
 }
- 4ae:	08 95       	ret
 
-000004b0 <_ZN10RingBuffer8RetrieveEPh>:
+RingBuffer::BufferStatus RingBuffer::Insert(uint8_t data)
+{
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
+ 5b4:	80 e0       	ldi	r24, 0x00	; 0
+ 5b6:	e0 cf       	rjmp	.-64     	; 0x578 <_ZN10RingBuffer6InsertEh+0x8>
+ 5b8:	2f bf       	out	0x3f, r18	; 63
+		m_iEnd = 0;
+
+		m_bEmpty = false;
+	}
+
+	return Success;
+ 5ba:	80 e0       	ldi	r24, 0x00	; 0
+}
+ 5bc:	08 95       	ret
+
+000005be <_ZN10RingBuffer8RetrieveEPh>:
 
 RingBuffer::BufferStatus RingBuffer::Retrieve(uint8_t* pData)
 {
- 4b0:	fc 01       	movw	r30, r24
+ 5be:	cf 93       	push	r28
+ 5c0:	df 93       	push	r29
+ 5c2:	fc 01       	movw	r30, r24
+ 5c4:	eb 01       	movw	r28, r22
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
- 4b2:	9f b7       	in	r25, 0x3f	; 63
+ 5c6:	3f b7       	in	r19, 0x3f	; 63
     return 1;
 }
 
 static __inline__ uint8_t __iCliRetVal(void)
 {
     cli();
- 4b4:	f8 94       	cli
+ 5c8:	f8 94       	cli
+ 5ca:	81 e0       	ldi	r24, 0x01	; 1
+ 5cc:	88 23       	and	r24, r24
+ 5ce:	c9 f0       	breq	.+50     	; 0x602 <_ZN10RingBuffer8RetrieveEPh+0x44>
 	{
 		if(m_bEmpty)
- 4b6:	82 81       	ldd	r24, Z+2	; 0x02
- 4b8:	81 11       	cpse	r24, r1
- 4ba:	13 c0       	rjmp	.+38     	; 0x4e2 <_ZN10RingBuffer8RetrieveEPh+0x32>
+ 5d0:	82 81       	ldd	r24, Z+2	; 0x02
+ 5d2:	88 23       	and	r24, r24
+ 5d4:	19 f0       	breq	.+6      	; 0x5dc <_ZN10RingBuffer8RetrieveEPh+0x1e>
+    (void)__s;
+}
+
+static __inline__ void __iRestore(const  uint8_t *__s)
+{
+    SREG = *__s;
+ 5d6:	3f bf       	out	0x3f, r19	; 63
 		{
 			return BufferEmpty;
+ 5d8:	82 e0       	ldi	r24, 0x02	; 2
+ 5da:	15 c0       	rjmp	.+42     	; 0x606 <_ZN10RingBuffer8RetrieveEPh+0x48>
 		}
 		
 		*pData = m_pBuffer[m_iBegin];
- 4bc:	80 81       	ld	r24, Z
- 4be:	df 01       	movw	r26, r30
- 4c0:	a8 0f       	add	r26, r24
- 4c2:	b1 1d       	adc	r27, r1
- 4c4:	13 96       	adiw	r26, 0x03	; 3
- 4c6:	8c 91       	ld	r24, X
- 4c8:	db 01       	movw	r26, r22
- 4ca:	8c 93       	st	X, r24
+ 5dc:	80 81       	ld	r24, Z
+ 5de:	df 01       	movw	r26, r30
+ 5e0:	a8 0f       	add	r26, r24
+ 5e2:	b1 1d       	adc	r27, r1
+ 5e4:	13 96       	adiw	r26, 0x03	; 3
+ 5e6:	8c 91       	ld	r24, X
+ 5e8:	88 83       	st	Y, r24
 		
 		if(++m_iBegin > SIZE - 1)
- 4cc:	80 81       	ld	r24, Z
- 4ce:	8f 5f       	subi	r24, 0xFF	; 255
- 4d0:	80 83       	st	Z, r24
+ 5ea:	80 81       	ld	r24, Z
+ 5ec:	8f 5f       	subi	r24, 0xFF	; 255
+ 5ee:	80 83       	st	Z, r24
 		{
 			m_iBegin = 0;
 		}
 		
 		if(m_iBegin == m_iEnd)
- 4d2:	20 81       	ld	r18, Z
- 4d4:	81 81       	ldd	r24, Z+1	; 0x01
- 4d6:	28 13       	cpse	r18, r24
- 4d8:	06 c0       	rjmp	.+12     	; 0x4e6 <_ZN10RingBuffer8RetrieveEPh+0x36>
-		{
-			m_bEmpty = true;
- 4da:	81 e0       	ldi	r24, 0x01	; 1
- 4dc:	82 83       	std	Z+2, r24	; 0x02
-		}
-		
-		return Success;
- 4de:	80 e0       	ldi	r24, 0x00	; 0
- 4e0:	03 c0       	rjmp	.+6      	; 0x4e8 <_ZN10RingBuffer8RetrieveEPh+0x38>
+ 5f0:	20 81       	ld	r18, Z
+ 5f2:	91 81       	ldd	r25, Z+1	; 0x01
+	return Success;
+}
+
+RingBuffer::BufferStatus RingBuffer::Retrieve(uint8_t* pData)
 {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
-	{
-		if(m_bEmpty)
+ 5f4:	80 e0       	ldi	r24, 0x00	; 0
+		if(++m_iBegin > SIZE - 1)
 		{
-			return BufferEmpty;
- 4e2:	82 e0       	ldi	r24, 0x02	; 2
- 4e4:	01 c0       	rjmp	.+2      	; 0x4e8 <_ZN10RingBuffer8RetrieveEPh+0x38>
+			m_iBegin = 0;
+		}
+		
 		if(m_iBegin == m_iEnd)
+ 5f6:	29 13       	cpse	r18, r25
+ 5f8:	e9 cf       	rjmp	.-46     	; 0x5cc <_ZN10RingBuffer8RetrieveEPh+0xe>
+		{
+			m_bEmpty = true;
+ 5fa:	81 e0       	ldi	r24, 0x01	; 1
+ 5fc:	82 83       	std	Z+2, r24	; 0x02
+	return Success;
+}
+
+RingBuffer::BufferStatus RingBuffer::Retrieve(uint8_t* pData)
+{
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
+ 5fe:	80 e0       	ldi	r24, 0x00	; 0
+ 600:	e5 cf       	rjmp	.-54     	; 0x5cc <_ZN10RingBuffer8RetrieveEPh+0xe>
+ 602:	3f bf       	out	0x3f, r19	; 63
 		{
 			m_bEmpty = true;
 		}
-		
-		return Success;
- 4e6:	80 e0       	ldi	r24, 0x00	; 0
-    (void)__s;
-}
-
-static __inline__ void __iRestore(const  uint8_t *__s)
-{
-    SREG = *__s;
- 4e8:	9f bf       	out	0x3f, r25	; 63
 	}
-}
- 4ea:	08 95       	ret
 
-000004ec <_ZN10RingBuffer13BufferIsEmptyEv>:
+	return Success;
+ 604:	80 e0       	ldi	r24, 0x00	; 0
+}
+ 606:	df 91       	pop	r29
+ 608:	cf 91       	pop	r28
+ 60a:	08 95       	ret
+
+0000060c <_ZN10RingBuffer13BufferIsEmptyEv>:
 
 const bool RingBuffer::BufferIsEmpty(void)
 {
 	return m_bEmpty;
- 4ec:	fc 01       	movw	r30, r24
- 4ee:	82 81       	ldd	r24, Z+2	; 0x02
+ 60c:	fc 01       	movw	r30, r24
+ 60e:	82 81       	ldd	r24, Z+2	; 0x02
 }
- 4f0:	08 95       	ret
+ 610:	08 95       	ret
 
-000004f2 <_Z41__static_initialization_and_destruction_0ii>:
+00000612 <_Z41__static_initialization_and_destruction_0ii>:
 	else
 	{
 		UCSR0B &= ~((1 << TXEN0) | (1 << TXCIE0));
 		PORTD &= ~(1 << PORTD7);
 	}
- 4f2:	01 97       	sbiw	r24, 0x01	; 1
- 4f4:	31 f4       	brne	.+12     	; 0x502 <_Z41__static_initialization_and_destruction_0ii+0x10>
- 4f6:	6f 3f       	cpi	r22, 0xFF	; 255
- 4f8:	7f 4f       	sbci	r23, 0xFF	; 255
- 4fa:	19 f4       	brne	.+6      	; 0x502 <_Z41__static_initialization_and_destruction_0ii+0x10>
+ 612:	01 97       	sbiw	r24, 0x01	; 1
+ 614:	31 f4       	brne	.+12     	; 0x622 <_Z41__static_initialization_and_destruction_0ii+0x10>
+ 616:	6f 3f       	cpi	r22, 0xFF	; 255
+ 618:	7f 4f       	sbci	r23, 0xFF	; 255
+ 61a:	19 f4       	brne	.+6      	; 0x622 <_Z41__static_initialization_and_destruction_0ii+0x10>
 */
 
 #include "XpressNetClient.h"
 
 uint8_t m_CallByte;
 RingBuffer m_Buffer;
- 4fc:	8d e3       	ldi	r24, 0x3D	; 61
- 4fe:	92 e0       	ldi	r25, 0x02	; 2
- 500:	b0 cf       	rjmp	.-160    	; 0x462 <_ZN10RingBufferC1Ev>
- 502:	08 95       	ret
+ 61c:	88 e4       	ldi	r24, 0x48	; 72
+ 61e:	92 e0       	ldi	r25, 0x02	; 2
+ 620:	a1 cf       	rjmp	.-190    	; 0x564 <_ZN10RingBufferC1Ev>
+ 622:	08 95       	ret
 
-00000504 <_Z20XpressNetClientSetupRKh>:
+00000624 <_Z20XpressNetClientSetupRKh>:
 volatile uint8_t m_TransmitCounter;
 
 void XpressNetClientSetup(const uint8_t& XpressNetAddress /* = XPRESSNETADDRESS */)
 {
 	m_CallByte = 0x40 + XpressNetAddress;
- 504:	fc 01       	movw	r30, r24
- 506:	80 81       	ld	r24, Z
- 508:	80 5c       	subi	r24, 0xC0	; 192
- 50a:	80 93 40 03 	sts	0x0340, r24	; 0x800340 <m_CallByte>
+ 624:	fc 01       	movw	r30, r24
+ 626:	80 81       	ld	r24, Z
+ 628:	80 5c       	subi	r24, 0xC0	; 192
+ 62a:	80 93 4b 0a 	sts	0x0A4B, r24	; 0x800a4b <m_CallByte>
 	for(uint8_t x = 0x40; x != 0; x >>= 1)
- 50e:	80 e4       	ldi	r24, 0x40	; 64
- 510:	88 23       	and	r24, r24
- 512:	61 f0       	breq	.+24     	; 0x52c <_Z20XpressNetClientSetupRKh+0x28>
+ 62e:	80 e4       	ldi	r24, 0x40	; 64
+ 630:	88 23       	and	r24, r24
+ 632:	61 f0       	breq	.+24     	; 0x64c <_Z20XpressNetClientSetupRKh+0x28>
 	{
 		if(m_CallByte & x)
- 514:	90 91 40 03 	lds	r25, 0x0340	; 0x800340 <m_CallByte>
- 518:	28 2f       	mov	r18, r24
- 51a:	29 23       	and	r18, r25
- 51c:	19 f0       	breq	.+6      	; 0x524 <_Z20XpressNetClientSetupRKh+0x20>
+ 634:	90 91 4b 0a 	lds	r25, 0x0A4B	; 0x800a4b <m_CallByte>
+ 638:	28 2f       	mov	r18, r24
+ 63a:	29 23       	and	r18, r25
+ 63c:	19 f0       	breq	.+6      	; 0x644 <_Z20XpressNetClientSetupRKh+0x20>
 		{
 			m_CallByte ^= 0x80;
- 51e:	90 58       	subi	r25, 0x80	; 128
- 520:	90 93 40 03 	sts	0x0340, r25	; 0x800340 <m_CallByte>
+ 63e:	90 58       	subi	r25, 0x80	; 128
+ 640:	90 93 4b 0a 	sts	0x0A4B, r25	; 0x800a4b <m_CallByte>
 volatile uint8_t m_TransmitCounter;
 
 void XpressNetClientSetup(const uint8_t& XpressNetAddress /* = XPRESSNETADDRESS */)
 {
 	m_CallByte = 0x40 + XpressNetAddress;
 	for(uint8_t x = 0x40; x != 0; x >>= 1)
- 524:	90 e0       	ldi	r25, 0x00	; 0
- 526:	95 95       	asr	r25
- 528:	87 95       	ror	r24
- 52a:	f2 cf       	rjmp	.-28     	; 0x510 <_Z20XpressNetClientSetupRKh+0xc>
+ 644:	90 e0       	ldi	r25, 0x00	; 0
+ 646:	95 95       	asr	r25
+ 648:	87 95       	ror	r24
+ 64a:	f2 cf       	rjmp	.-28     	; 0x630 <_Z20XpressNetClientSetupRKh+0xc>
 			m_CallByte ^= 0x80;
 		}
 	}
 	
 	//	PORTD bit 7 used for RS485 Direction
 	PORTD &= !0x80;
- 52c:	8b b1       	in	r24, 0x0b	; 11
- 52e:	1b b8       	out	0x0b, r1	; 11
+ 64c:	8b b1       	in	r24, 0x0b	; 11
+ 64e:	1b b8       	out	0x0b, r1	; 11
 	DDRD = 0x80;
- 530:	80 e8       	ldi	r24, 0x80	; 128
- 532:	8a b9       	out	0x0a, r24	; 10
+ 650:	80 e8       	ldi	r24, 0x80	; 128
+ 652:	8a b9       	out	0x0a, r24	; 10
 	
 	//	USART0 initialization (ExpressNet)
 	UBRR0 = (F_CPU / (16 * XPRESSNET_BAUDRATE)) - 1;
- 534:	83 e1       	ldi	r24, 0x13	; 19
- 536:	90 e0       	ldi	r25, 0x00	; 0
- 538:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
- 53c:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
+ 654:	83 e1       	ldi	r24, 0x13	; 19
+ 656:	90 e0       	ldi	r25, 0x00	; 0
+ 658:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
+ 65c:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
 	UCSR0A = (1 << MPCM0);
- 540:	81 e0       	ldi	r24, 0x01	; 1
- 542:	80 93 c0 00 	sts	0x00C0, r24	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
+ 660:	81 e0       	ldi	r24, 0x01	; 1
+ 662:	80 93 c0 00 	sts	0x00C0, r24	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
 	UCSR0C = (0 << USBS0) | (3 << UCSZ00);
- 546:	86 e0       	ldi	r24, 0x06	; 6
- 548:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7e00c2>
+ 666:	86 e0       	ldi	r24, 0x06	; 6
+ 668:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7e00c2>
 	UCSR0B = (1 << UCSZ02) | (1 << RXEN0) | (1 << RXCIE0);
- 54c:	84 e9       	ldi	r24, 0x94	; 148
- 54e:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
- 552:	08 95       	ret
+ 66c:	84 e9       	ldi	r24, 0x94	; 148
+ 66e:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
+ 672:	08 95       	ret
 
-00000554 <_Z22XpressNetClientRespondPKh>:
+00000674 <_Z22XpressNetClientRespondPKh>:
 }
 
 RingBuffer::BufferStatus XpressNetClientRespond(const uint8_t* const pResponse)
 {
- 554:	ff 92       	push	r15
- 556:	0f 93       	push	r16
- 558:	1f 93       	push	r17
- 55a:	cf 93       	push	r28
- 55c:	df 93       	push	r29
- 55e:	8c 01       	movw	r16, r24
+ 674:	ff 92       	push	r15
+ 676:	0f 93       	push	r16
+ 678:	1f 93       	push	r17
+ 67a:	cf 93       	push	r28
+ 67c:	df 93       	push	r29
+ 67e:	8c 01       	movw	r16, r24
 	RingBuffer::BufferStatus status = RingBuffer::Success;
 	
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
- 560:	ff b6       	in	r15, 0x3f	; 63
+ 680:	ff b6       	in	r15, 0x3f	; 63
     return 1;
 }
 
 static __inline__ uint8_t __iCliRetVal(void)
 {
     cli();
- 562:	f8 94       	cli
- 564:	91 e0       	ldi	r25, 0x01	; 1
+ 682:	f8 94       	cli
+ 684:	91 e0       	ldi	r25, 0x01	; 1
 	UCSR0B = (1 << UCSZ02) | (1 << RXEN0) | (1 << RXCIE0);
 }
 
 RingBuffer::BufferStatus XpressNetClientRespond(const uint8_t* const pResponse)
 {
 	RingBuffer::BufferStatus status = RingBuffer::Success;
- 566:	80 e0       	ldi	r24, 0x00	; 0
+ 686:	80 e0       	ldi	r24, 0x00	; 0
 	
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
- 568:	99 23       	and	r25, r25
- 56a:	99 f0       	breq	.+38     	; 0x592 <_Z22XpressNetClientRespondPKh+0x3e>
+ 688:	99 23       	and	r25, r25
+ 68a:	99 f0       	breq	.+38     	; 0x6b2 <_Z22XpressNetClientRespondPKh+0x3e>
 	{
 		uint8_t msgLength = pResponse[0];
- 56c:	f8 01       	movw	r30, r16
- 56e:	d0 81       	ld	r29, Z
+ 68c:	f8 01       	movw	r30, r16
+ 68e:	d0 81       	ld	r29, Z
 		for(uint8_t i = 0; i < msgLength; i++)
- 570:	c0 e0       	ldi	r28, 0x00	; 0
+ 690:	c0 e0       	ldi	r28, 0x00	; 0
 
 RingBuffer::BufferStatus XpressNetClientRespond(const uint8_t* const pResponse)
 {
 	RingBuffer::BufferStatus status = RingBuffer::Success;
 	
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
- 572:	90 e0       	ldi	r25, 0x00	; 0
+ 692:	90 e0       	ldi	r25, 0x00	; 0
 	{
 		uint8_t msgLength = pResponse[0];
 		for(uint8_t i = 0; i < msgLength; i++)
- 574:	cd 17       	cp	r28, r29
- 576:	c0 f7       	brcc	.-16     	; 0x568 <_Z22XpressNetClientRespondPKh+0x14>
+ 694:	cd 17       	cp	r28, r29
+ 696:	c0 f7       	brcc	.-16     	; 0x688 <_Z22XpressNetClientRespondPKh+0x14>
 		{
 			status = m_Buffer.Insert(pResponse[i]);
- 578:	f8 01       	movw	r30, r16
- 57a:	ec 0f       	add	r30, r28
- 57c:	f1 1d       	adc	r31, r1
- 57e:	60 81       	ld	r22, Z
- 580:	8d e3       	ldi	r24, 0x3D	; 61
- 582:	92 e0       	ldi	r25, 0x02	; 2
- 584:	74 df       	rcall	.-280    	; 0x46e <_ZN10RingBuffer6InsertEh>
+ 698:	f8 01       	movw	r30, r16
+ 69a:	ec 0f       	add	r30, r28
+ 69c:	f1 1d       	adc	r31, r1
+ 69e:	60 81       	ld	r22, Z
+ 6a0:	88 e4       	ldi	r24, 0x48	; 72
+ 6a2:	92 e0       	ldi	r25, 0x02	; 2
+ 6a4:	65 df       	rcall	.-310    	; 0x570 <_ZN10RingBuffer6InsertEh>
 			if(status != RingBuffer::Success)
- 586:	88 23       	and	r24, r24
- 588:	11 f0       	breq	.+4      	; 0x58e <_Z22XpressNetClientRespondPKh+0x3a>
+ 6a6:	88 23       	and	r24, r24
+ 6a8:	11 f0       	breq	.+4      	; 0x6ae <_Z22XpressNetClientRespondPKh+0x3a>
     (void)__s;
 }
 
 static __inline__ void __iRestore(const  uint8_t *__s)
 {
     SREG = *__s;
- 58a:	ff be       	out	0x3f, r15	; 63
+ 6aa:	ff be       	out	0x3f, r15	; 63
     __asm__ volatile ("" ::: "memory");
- 58c:	03 c0       	rjmp	.+6      	; 0x594 <_Z22XpressNetClientRespondPKh+0x40>
+ 6ac:	03 c0       	rjmp	.+6      	; 0x6b4 <_Z22XpressNetClientRespondPKh+0x40>
 	RingBuffer::BufferStatus status = RingBuffer::Success;
 	
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
 	{
 		uint8_t msgLength = pResponse[0];
 		for(uint8_t i = 0; i < msgLength; i++)
- 58e:	cf 5f       	subi	r28, 0xFF	; 255
- 590:	f0 cf       	rjmp	.-32     	; 0x572 <_Z22XpressNetClientRespondPKh+0x1e>
+ 6ae:	cf 5f       	subi	r28, 0xFF	; 255
+ 6b0:	f0 cf       	rjmp	.-32     	; 0x692 <_Z22XpressNetClientRespondPKh+0x1e>
     (void)__s;
 }
 
 static __inline__ void __iRestore(const  uint8_t *__s)
 {
     SREG = *__s;
- 592:	ff be       	out	0x3f, r15	; 63
+ 6b2:	ff be       	out	0x3f, r15	; 63
 				return status;
 			}
 		}
 	}
 	return status;
 }
- 594:	df 91       	pop	r29
- 596:	cf 91       	pop	r28
- 598:	1f 91       	pop	r17
- 59a:	0f 91       	pop	r16
- 59c:	ff 90       	pop	r15
- 59e:	08 95       	ret
+ 6b4:	df 91       	pop	r29
+ 6b6:	cf 91       	pop	r28
+ 6b8:	1f 91       	pop	r17
+ 6ba:	0f 91       	pop	r16
+ 6bc:	ff 90       	pop	r15
+ 6be:	08 95       	ret
 
-000005a0 <__vector_20>:
+000006c0 <__vector_20>:
 
 ISR(USART0_RX_vect)
 {
- 5a0:	1f 92       	push	r1
- 5a2:	0f 92       	push	r0
- 5a4:	0f b6       	in	r0, 0x3f	; 63
- 5a6:	0f 92       	push	r0
- 5a8:	11 24       	eor	r1, r1
- 5aa:	0b b6       	in	r0, 0x3b	; 59
- 5ac:	0f 92       	push	r0
- 5ae:	2f 93       	push	r18
- 5b0:	3f 93       	push	r19
- 5b2:	4f 93       	push	r20
- 5b4:	5f 93       	push	r21
- 5b6:	6f 93       	push	r22
- 5b8:	7f 93       	push	r23
- 5ba:	8f 93       	push	r24
- 5bc:	9f 93       	push	r25
- 5be:	af 93       	push	r26
- 5c0:	bf 93       	push	r27
- 5c2:	ef 93       	push	r30
- 5c4:	ff 93       	push	r31
- 5c6:	cf 93       	push	r28
- 5c8:	df 93       	push	r29
- 5ca:	1f 92       	push	r1
- 5cc:	cd b7       	in	r28, 0x3d	; 61
- 5ce:	de b7       	in	r29, 0x3e	; 62
+ 6c0:	1f 92       	push	r1
+ 6c2:	0f 92       	push	r0
+ 6c4:	0f b6       	in	r0, 0x3f	; 63
+ 6c6:	0f 92       	push	r0
+ 6c8:	11 24       	eor	r1, r1
+ 6ca:	0b b6       	in	r0, 0x3b	; 59
+ 6cc:	0f 92       	push	r0
+ 6ce:	2f 93       	push	r18
+ 6d0:	3f 93       	push	r19
+ 6d2:	4f 93       	push	r20
+ 6d4:	5f 93       	push	r21
+ 6d6:	6f 93       	push	r22
+ 6d8:	7f 93       	push	r23
+ 6da:	8f 93       	push	r24
+ 6dc:	9f 93       	push	r25
+ 6de:	af 93       	push	r26
+ 6e0:	bf 93       	push	r27
+ 6e2:	ef 93       	push	r30
+ 6e4:	ff 93       	push	r31
+ 6e6:	cf 93       	push	r28
+ 6e8:	df 93       	push	r29
+ 6ea:	1f 92       	push	r1
+ 6ec:	cd b7       	in	r28, 0x3d	; 61
+ 6ee:	de b7       	in	r29, 0x3e	; 62
 	uint8_t RxErrors = UCSR0A & ((1 << FE0) | (1 << DOR0) | (1 << UPE0));
- 5d0:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
- 5d4:	8c 71       	andi	r24, 0x1C	; 28
+ 6f0:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
+ 6f4:	8c 71       	andi	r24, 0x1C	; 28
 	uint8_t data = UDR0;
- 5d6:	90 91 c6 00 	lds	r25, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+ 6f6:	90 91 c6 00 	lds	r25, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
 	if(!RxErrors)
- 5da:	81 11       	cpse	r24, r1
- 5dc:	32 c0       	rjmp	.+100    	; 0x642 <__vector_20+0xa2>
+ 6fa:	81 11       	cpse	r24, r1
+ 6fc:	32 c0       	rjmp	.+100    	; 0x762 <__vector_20+0xa2>
 	{
 		if(UCSR0A & (1 << MPCM0))
- 5de:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
- 5e2:	80 ff       	sbrs	r24, 0
- 5e4:	33 c0       	rjmp	.+102    	; 0x64c <__vector_20+0xac>
+ 6fe:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7e00c0>
+ 702:	80 ff       	sbrs	r24, 0
+ 704:	33 c0       	rjmp	.+102    	; 0x76c <__vector_20+0xac>
 		{
 			if(data == m_CallByte)
- 5e6:	80 91 40 03 	lds	r24, 0x0340	; 0x800340 <m_CallByte>
- 5ea:	98 13       	cpse	r25, r24
- 5ec:	2f c0       	rjmp	.+94     	; 0x64c <__vector_20+0xac>
+ 706:	80 91 4b 0a 	lds	r24, 0x0A4B	; 0x800a4b <m_CallByte>
+ 70a:	98 13       	cpse	r25, r24
+ 70c:	2f c0       	rjmp	.+94     	; 0x76c <__vector_20+0xac>
 			{
 				if(!(m_Buffer.BufferIsEmpty()))
- 5ee:	8d e3       	ldi	r24, 0x3D	; 61
- 5f0:	92 e0       	ldi	r25, 0x02	; 2
- 5f2:	7c df       	rcall	.-264    	; 0x4ec <_ZN10RingBuffer13BufferIsEmptyEv>
- 5f4:	81 11       	cpse	r24, r1
- 5f6:	2a c0       	rjmp	.+84     	; 0x64c <__vector_20+0xac>
+ 70e:	88 e4       	ldi	r24, 0x48	; 72
+ 710:	92 e0       	ldi	r25, 0x02	; 2
+ 712:	7c df       	rcall	.-264    	; 0x60c <_ZN10RingBuffer13BufferIsEmptyEv>
+ 714:	81 11       	cpse	r24, r1
+ 716:	2a c0       	rjmp	.+84     	; 0x76c <__vector_20+0xac>
 				{
 					if(0 == m_TransmitCounter)
- 5f8:	80 91 3c 02 	lds	r24, 0x023C	; 0x80023c <m_TransmitCounter>
- 5fc:	81 11       	cpse	r24, r1
- 5fe:	26 c0       	rjmp	.+76     	; 0x64c <__vector_20+0xac>
+ 718:	80 91 47 02 	lds	r24, 0x0247	; 0x800247 <m_TransmitCounter>
+ 71c:	81 11       	cpse	r24, r1
+ 71e:	26 c0       	rjmp	.+76     	; 0x76c <__vector_20+0xac>
 					{
 						m_Buffer.Retrieve((uint8_t*)&m_TransmitCounter);
- 600:	6c e3       	ldi	r22, 0x3C	; 60
- 602:	72 e0       	ldi	r23, 0x02	; 2
- 604:	8d e3       	ldi	r24, 0x3D	; 61
- 606:	92 e0       	ldi	r25, 0x02	; 2
- 608:	53 df       	rcall	.-346    	; 0x4b0 <_ZN10RingBuffer8RetrieveEPh>
+ 720:	67 e4       	ldi	r22, 0x47	; 71
+ 722:	72 e0       	ldi	r23, 0x02	; 2
+ 724:	88 e4       	ldi	r24, 0x48	; 72
+ 726:	92 e0       	ldi	r25, 0x02	; 2
+ 728:	4a df       	rcall	.-364    	; 0x5be <_ZN10RingBuffer8RetrieveEPh>
 						m_TransmitCounter--;
- 60a:	80 91 3c 02 	lds	r24, 0x023C	; 0x80023c <m_TransmitCounter>
- 60e:	81 50       	subi	r24, 0x01	; 1
- 610:	80 93 3c 02 	sts	0x023C, r24	; 0x80023c <m_TransmitCounter>
+ 72a:	80 91 47 02 	lds	r24, 0x0247	; 0x800247 <m_TransmitCounter>
+ 72e:	81 50       	subi	r24, 0x01	; 1
+ 730:	80 93 47 02 	sts	0x0247, r24	; 0x800247 <m_TransmitCounter>
 						uint8_t firstData;
 						m_Buffer.Retrieve(&firstData);
- 614:	be 01       	movw	r22, r28
- 616:	6f 5f       	subi	r22, 0xFF	; 255
- 618:	7f 4f       	sbci	r23, 0xFF	; 255
- 61a:	8d e3       	ldi	r24, 0x3D	; 61
- 61c:	92 e0       	ldi	r25, 0x02	; 2
- 61e:	48 df       	rcall	.-368    	; 0x4b0 <_ZN10RingBuffer8RetrieveEPh>
+ 734:	be 01       	movw	r22, r28
+ 736:	6f 5f       	subi	r22, 0xFF	; 255
+ 738:	7f 4f       	sbci	r23, 0xFF	; 255
+ 73a:	88 e4       	ldi	r24, 0x48	; 72
+ 73c:	92 e0       	ldi	r25, 0x02	; 2
+ 73e:	3f df       	rcall	.-386    	; 0x5be <_ZN10RingBuffer8RetrieveEPh>
 						m_TransmitCounter--;
- 620:	80 91 3c 02 	lds	r24, 0x023C	; 0x80023c <m_TransmitCounter>
- 624:	81 50       	subi	r24, 0x01	; 1
- 626:	80 93 3c 02 	sts	0x023C, r24	; 0x80023c <m_TransmitCounter>
+ 740:	80 91 47 02 	lds	r24, 0x0247	; 0x800247 <m_TransmitCounter>
+ 744:	81 50       	subi	r24, 0x01	; 1
+ 746:	80 93 47 02 	sts	0x0247, r24	; 0x800247 <m_TransmitCounter>
 						PORTD |= (1 << PORTD7);
- 62a:	8b b1       	in	r24, 0x0b	; 11
- 62c:	80 68       	ori	r24, 0x80	; 128
- 62e:	8b b9       	out	0x0b, r24	; 11
+ 74a:	8b b1       	in	r24, 0x0b	; 11
+ 74c:	80 68       	ori	r24, 0x80	; 128
+ 74e:	8b b9       	out	0x0b, r24	; 11
 						UCSR0B |= (1 << TXEN0) | (1 << TXCIE0);
- 630:	e1 ec       	ldi	r30, 0xC1	; 193
- 632:	f0 e0       	ldi	r31, 0x00	; 0
- 634:	80 81       	ld	r24, Z
- 636:	88 64       	ori	r24, 0x48	; 72
- 638:	80 83       	st	Z, r24
+ 750:	e1 ec       	ldi	r30, 0xC1	; 193
+ 752:	f0 e0       	ldi	r31, 0x00	; 0
+ 754:	80 81       	ld	r24, Z
+ 756:	88 64       	ori	r24, 0x48	; 72
+ 758:	80 83       	st	Z, r24
 						UDR0 = firstData;
- 63a:	89 81       	ldd	r24, Y+1	; 0x01
- 63c:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
- 640:	05 c0       	rjmp	.+10     	; 0x64c <__vector_20+0xac>
+ 75a:	89 81       	ldd	r24, Y+1	; 0x01
+ 75c:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+ 760:	05 c0       	rjmp	.+10     	; 0x76c <__vector_20+0xac>
 			//	
 		}
 	}	//	!RxErrors
 	else
 	{
 		UCSR0A |= (1 << MPCM0);
- 642:	e0 ec       	ldi	r30, 0xC0	; 192
- 644:	f0 e0       	ldi	r31, 0x00	; 0
- 646:	80 81       	ld	r24, Z
- 648:	81 60       	ori	r24, 0x01	; 1
- 64a:	80 83       	st	Z, r24
+ 762:	e0 ec       	ldi	r30, 0xC0	; 192
+ 764:	f0 e0       	ldi	r31, 0x00	; 0
+ 766:	80 81       	ld	r24, Z
+ 768:	81 60       	ori	r24, 0x01	; 1
+ 76a:	80 83       	st	Z, r24
 	}
 }
- 64c:	0f 90       	pop	r0
- 64e:	df 91       	pop	r29
- 650:	cf 91       	pop	r28
- 652:	ff 91       	pop	r31
- 654:	ef 91       	pop	r30
- 656:	bf 91       	pop	r27
- 658:	af 91       	pop	r26
- 65a:	9f 91       	pop	r25
- 65c:	8f 91       	pop	r24
- 65e:	7f 91       	pop	r23
- 660:	6f 91       	pop	r22
- 662:	5f 91       	pop	r21
- 664:	4f 91       	pop	r20
- 666:	3f 91       	pop	r19
- 668:	2f 91       	pop	r18
- 66a:	0f 90       	pop	r0
- 66c:	0b be       	out	0x3b, r0	; 59
- 66e:	0f 90       	pop	r0
- 670:	0f be       	out	0x3f, r0	; 63
- 672:	0f 90       	pop	r0
- 674:	1f 90       	pop	r1
- 676:	18 95       	reti
+ 76c:	0f 90       	pop	r0
+ 76e:	df 91       	pop	r29
+ 770:	cf 91       	pop	r28
+ 772:	ff 91       	pop	r31
+ 774:	ef 91       	pop	r30
+ 776:	bf 91       	pop	r27
+ 778:	af 91       	pop	r26
+ 77a:	9f 91       	pop	r25
+ 77c:	8f 91       	pop	r24
+ 77e:	7f 91       	pop	r23
+ 780:	6f 91       	pop	r22
+ 782:	5f 91       	pop	r21
+ 784:	4f 91       	pop	r20
+ 786:	3f 91       	pop	r19
+ 788:	2f 91       	pop	r18
+ 78a:	0f 90       	pop	r0
+ 78c:	0b be       	out	0x3b, r0	; 59
+ 78e:	0f 90       	pop	r0
+ 790:	0f be       	out	0x3f, r0	; 63
+ 792:	0f 90       	pop	r0
+ 794:	1f 90       	pop	r1
+ 796:	18 95       	reti
 
-00000678 <__vector_22>:
+00000798 <__vector_22>:
 
 ISR(USART0_TX_vect)
 {
- 678:	1f 92       	push	r1
- 67a:	0f 92       	push	r0
- 67c:	0f b6       	in	r0, 0x3f	; 63
- 67e:	0f 92       	push	r0
- 680:	11 24       	eor	r1, r1
- 682:	0b b6       	in	r0, 0x3b	; 59
- 684:	0f 92       	push	r0
- 686:	2f 93       	push	r18
- 688:	3f 93       	push	r19
- 68a:	4f 93       	push	r20
- 68c:	5f 93       	push	r21
- 68e:	6f 93       	push	r22
- 690:	7f 93       	push	r23
- 692:	8f 93       	push	r24
- 694:	9f 93       	push	r25
- 696:	af 93       	push	r26
- 698:	bf 93       	push	r27
- 69a:	ef 93       	push	r30
- 69c:	ff 93       	push	r31
- 69e:	cf 93       	push	r28
- 6a0:	df 93       	push	r29
- 6a2:	1f 92       	push	r1
- 6a4:	cd b7       	in	r28, 0x3d	; 61
- 6a6:	de b7       	in	r29, 0x3e	; 62
+ 798:	1f 92       	push	r1
+ 79a:	0f 92       	push	r0
+ 79c:	0f b6       	in	r0, 0x3f	; 63
+ 79e:	0f 92       	push	r0
+ 7a0:	11 24       	eor	r1, r1
+ 7a2:	0b b6       	in	r0, 0x3b	; 59
+ 7a4:	0f 92       	push	r0
+ 7a6:	2f 93       	push	r18
+ 7a8:	3f 93       	push	r19
+ 7aa:	4f 93       	push	r20
+ 7ac:	5f 93       	push	r21
+ 7ae:	6f 93       	push	r22
+ 7b0:	7f 93       	push	r23
+ 7b2:	8f 93       	push	r24
+ 7b4:	9f 93       	push	r25
+ 7b6:	af 93       	push	r26
+ 7b8:	bf 93       	push	r27
+ 7ba:	ef 93       	push	r30
+ 7bc:	ff 93       	push	r31
+ 7be:	cf 93       	push	r28
+ 7c0:	df 93       	push	r29
+ 7c2:	1f 92       	push	r1
+ 7c4:	cd b7       	in	r28, 0x3d	; 61
+ 7c6:	de b7       	in	r29, 0x3e	; 62
 	if(m_TransmitCounter)
- 6a8:	80 91 3c 02 	lds	r24, 0x023C	; 0x80023c <m_TransmitCounter>
- 6ac:	88 23       	and	r24, r24
- 6ae:	79 f0       	breq	.+30     	; 0x6ce <__vector_22+0x56>
+ 7c8:	80 91 47 02 	lds	r24, 0x0247	; 0x800247 <m_TransmitCounter>
+ 7cc:	88 23       	and	r24, r24
+ 7ce:	79 f0       	breq	.+30     	; 0x7ee <__vector_22+0x56>
 	{
 		uint8_t data;
 		m_Buffer.Retrieve(&data);
- 6b0:	be 01       	movw	r22, r28
- 6b2:	6f 5f       	subi	r22, 0xFF	; 255
- 6b4:	7f 4f       	sbci	r23, 0xFF	; 255
- 6b6:	8d e3       	ldi	r24, 0x3D	; 61
- 6b8:	92 e0       	ldi	r25, 0x02	; 2
- 6ba:	fa de       	rcall	.-524    	; 0x4b0 <_ZN10RingBuffer8RetrieveEPh>
+ 7d0:	be 01       	movw	r22, r28
+ 7d2:	6f 5f       	subi	r22, 0xFF	; 255
+ 7d4:	7f 4f       	sbci	r23, 0xFF	; 255
+ 7d6:	88 e4       	ldi	r24, 0x48	; 72
+ 7d8:	92 e0       	ldi	r25, 0x02	; 2
+ 7da:	f1 de       	rcall	.-542    	; 0x5be <_ZN10RingBuffer8RetrieveEPh>
 		m_TransmitCounter--;
- 6bc:	80 91 3c 02 	lds	r24, 0x023C	; 0x80023c <m_TransmitCounter>
- 6c0:	81 50       	subi	r24, 0x01	; 1
- 6c2:	80 93 3c 02 	sts	0x023C, r24	; 0x80023c <m_TransmitCounter>
+ 7dc:	80 91 47 02 	lds	r24, 0x0247	; 0x800247 <m_TransmitCounter>
+ 7e0:	81 50       	subi	r24, 0x01	; 1
+ 7e2:	80 93 47 02 	sts	0x0247, r24	; 0x800247 <m_TransmitCounter>
 		UDR0 = data;
- 6c6:	89 81       	ldd	r24, Y+1	; 0x01
- 6c8:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
- 6cc:	08 c0       	rjmp	.+16     	; 0x6de <__vector_22+0x66>
+ 7e6:	89 81       	ldd	r24, Y+1	; 0x01
+ 7e8:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+ 7ec:	08 c0       	rjmp	.+16     	; 0x7fe <__vector_22+0x66>
 	}
 	else
 	{
 		UCSR0B &= ~((1 << TXEN0) | (1 << TXCIE0));
- 6ce:	e1 ec       	ldi	r30, 0xC1	; 193
- 6d0:	f0 e0       	ldi	r31, 0x00	; 0
- 6d2:	80 81       	ld	r24, Z
- 6d4:	87 7b       	andi	r24, 0xB7	; 183
- 6d6:	80 83       	st	Z, r24
+ 7ee:	e1 ec       	ldi	r30, 0xC1	; 193
+ 7f0:	f0 e0       	ldi	r31, 0x00	; 0
+ 7f2:	80 81       	ld	r24, Z
+ 7f4:	87 7b       	andi	r24, 0xB7	; 183
+ 7f6:	80 83       	st	Z, r24
 		PORTD &= ~(1 << PORTD7);
- 6d8:	8b b1       	in	r24, 0x0b	; 11
- 6da:	8f 77       	andi	r24, 0x7F	; 127
- 6dc:	8b b9       	out	0x0b, r24	; 11
+ 7f8:	8b b1       	in	r24, 0x0b	; 11
+ 7fa:	8f 77       	andi	r24, 0x7F	; 127
+ 7fc:	8b b9       	out	0x0b, r24	; 11
 	}
- 6de:	0f 90       	pop	r0
- 6e0:	df 91       	pop	r29
- 6e2:	cf 91       	pop	r28
- 6e4:	ff 91       	pop	r31
- 6e6:	ef 91       	pop	r30
- 6e8:	bf 91       	pop	r27
- 6ea:	af 91       	pop	r26
- 6ec:	9f 91       	pop	r25
- 6ee:	8f 91       	pop	r24
- 6f0:	7f 91       	pop	r23
- 6f2:	6f 91       	pop	r22
- 6f4:	5f 91       	pop	r21
- 6f6:	4f 91       	pop	r20
- 6f8:	3f 91       	pop	r19
- 6fa:	2f 91       	pop	r18
- 6fc:	0f 90       	pop	r0
- 6fe:	0b be       	out	0x3b, r0	; 59
- 700:	0f 90       	pop	r0
- 702:	0f be       	out	0x3f, r0	; 63
- 704:	0f 90       	pop	r0
- 706:	1f 90       	pop	r1
- 708:	18 95       	reti
+ 7fe:	0f 90       	pop	r0
+ 800:	df 91       	pop	r29
+ 802:	cf 91       	pop	r28
+ 804:	ff 91       	pop	r31
+ 806:	ef 91       	pop	r30
+ 808:	bf 91       	pop	r27
+ 80a:	af 91       	pop	r26
+ 80c:	9f 91       	pop	r25
+ 80e:	8f 91       	pop	r24
+ 810:	7f 91       	pop	r23
+ 812:	6f 91       	pop	r22
+ 814:	5f 91       	pop	r21
+ 816:	4f 91       	pop	r20
+ 818:	3f 91       	pop	r19
+ 81a:	2f 91       	pop	r18
+ 81c:	0f 90       	pop	r0
+ 81e:	0b be       	out	0x3b, r0	; 59
+ 820:	0f 90       	pop	r0
+ 822:	0f be       	out	0x3f, r0	; 63
+ 824:	0f 90       	pop	r0
+ 826:	1f 90       	pop	r1
+ 828:	18 95       	reti
 
-0000070a <_GLOBAL__sub_I_m_CallByte>:
- 70a:	6f ef       	ldi	r22, 0xFF	; 255
- 70c:	7f ef       	ldi	r23, 0xFF	; 255
- 70e:	81 e0       	ldi	r24, 0x01	; 1
- 710:	90 e0       	ldi	r25, 0x00	; 0
- 712:	ef ce       	rjmp	.-546    	; 0x4f2 <_Z41__static_initialization_and_destruction_0ii>
- 714:	08 95       	ret
+0000082a <_GLOBAL__sub_I_m_CallByte>:
+ 82a:	6f ef       	ldi	r22, 0xFF	; 255
+ 82c:	7f ef       	ldi	r23, 0xFF	; 255
+ 82e:	81 e0       	ldi	r24, 0x01	; 1
+ 830:	90 e0       	ldi	r25, 0x00	; 0
+ 832:	ef ce       	rjmp	.-546    	; 0x612 <_Z41__static_initialization_and_destruction_0ii>
+ 834:	08 95       	ret
 
-00000716 <__tablejump2__>:
- 716:	ee 0f       	add	r30, r30
- 718:	ff 1f       	adc	r31, r31
- 71a:	00 24       	eor	r0, r0
- 71c:	00 1c       	adc	r0, r0
- 71e:	0b be       	out	0x3b, r0	; 59
- 720:	07 90       	elpm	r0, Z+
- 722:	f6 91       	elpm	r31, Z
- 724:	e0 2d       	mov	r30, r0
- 726:	09 94       	ijmp
+00000836 <__tablejump2__>:
+ 836:	ee 0f       	add	r30, r30
+ 838:	ff 1f       	adc	r31, r31
+ 83a:	00 24       	eor	r0, r0
+ 83c:	00 1c       	adc	r0, r0
+ 83e:	0b be       	out	0x3b, r0	; 59
+ 840:	07 90       	elpm	r0, Z+
+ 842:	f6 91       	elpm	r31, Z
+ 844:	e0 2d       	mov	r30, r0
+ 846:	09 94       	ijmp
 
-00000728 <memcpy>:
- 728:	fb 01       	movw	r30, r22
- 72a:	dc 01       	movw	r26, r24
- 72c:	02 c0       	rjmp	.+4      	; 0x732 <memcpy+0xa>
- 72e:	01 90       	ld	r0, Z+
- 730:	0d 92       	st	X+, r0
- 732:	41 50       	subi	r20, 0x01	; 1
- 734:	50 40       	sbci	r21, 0x00	; 0
- 736:	d8 f7       	brcc	.-10     	; 0x72e <memcpy+0x6>
- 738:	08 95       	ret
+00000848 <memcpy>:
+ 848:	fb 01       	movw	r30, r22
+ 84a:	dc 01       	movw	r26, r24
+ 84c:	02 c0       	rjmp	.+4      	; 0x852 <memcpy+0xa>
+ 84e:	01 90       	ld	r0, Z+
+ 850:	0d 92       	st	X+, r0
+ 852:	41 50       	subi	r20, 0x01	; 1
+ 854:	50 40       	sbci	r21, 0x00	; 0
+ 856:	d8 f7       	brcc	.-10     	; 0x84e <memcpy+0x6>
+ 858:	08 95       	ret
 
-0000073a <_exit>:
- 73a:	f8 94       	cli
+0000085a <_exit>:
+ 85a:	f8 94       	cli
 
-0000073c <__stop_program>:
- 73c:	ff cf       	rjmp	.-2      	; 0x73c <__stop_program>
+0000085c <__stop_program>:
+ 85c:	ff cf       	rjmp	.-2      	; 0x85c <__stop_program>

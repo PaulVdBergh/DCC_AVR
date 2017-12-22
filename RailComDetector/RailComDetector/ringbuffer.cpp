@@ -27,9 +27,9 @@ RingBuffer::BufferStatus RingBuffer::Insert(uint8_t data)
 		m_iEnd = 0;
 
 		m_bEmpty = false;
-		
-		return Success;
 	}
+
+	return Success;
 }
 
 RingBuffer::BufferStatus RingBuffer::Retrieve(uint8_t* pData)
@@ -52,9 +52,9 @@ RingBuffer::BufferStatus RingBuffer::Retrieve(uint8_t* pData)
 		{
 			m_bEmpty = true;
 		}
-		
-		return Success;
 	}
+
+	return Success;
 }
 
 const bool RingBuffer::BufferIsEmpty(void)
