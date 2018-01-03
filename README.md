@@ -1,5 +1,5 @@
 # DCC_AVR
-The repository for AVR sourcecode for the DCC project. (Expresnet Interface)
+The repository for AVR sourcecode for the DCC project. (Expresnet Interface, RailCom detector etc)
 
 The DCC project is an attempt to implement a DCC (Digital Command Control) Command Station based on the BeagleBone Black platform.
 The project consists of four parts:
