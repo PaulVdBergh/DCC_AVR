@@ -69,97 +69,18 @@ ISR(INT2_vect)	//	RailComGap detection
 		if (!bRxError && (dataCounter > 0))
 		{
 			bRailComDataReady = true;
-		}
-	}
-	else
-	{
-		//	Falling Edge --> Start of RailCom Gap
-		bRxError = false;
-		EICRA = (3 << ISC20);					//	INT2 Rising Edge Interrupt Request
-		EIMSK = (1 << INT2);					//	this clears INT0 Interrupt enable mask
-		UCSR1B = (1 << RXCIE1) | (1 << RXEN1);	// Receiver Enable, RX Complete Interrupt Enable
-	}
-}
+//************************************************************************************************
 
-ISR(TIMER0_OVF_vect)	//	Occupancy detection timeout : enter idle state
-{
-	TIFR0 = 0xFF;	//	Clear all pending interrupts
-	TIMSK0 = 0;		//	Disable further interrupts from timer
-	bOccupied = false;
-	bHighAddressValid = false;
-	bLowAddressValid = false;
-	bAddressResponded = false;
-}
-
-ISR(USART1_RX_vect)
-{
-	uint8_t RxErrors = UCSR1A & ((1 << FE1) | (1 << DOR1) | (1 << UPE1));
-	RawRailcomMessage[dataCounter++] = UDR1;
-	
-	if(RxErrors)
-	{
-		dataCounter = 0;
-		bRxError = true;
-	}
-}
-
-uint8_t resetSource = 0;
-
-int main(void)
-{
-	resetSource = MCUSR;
-	MCUSR = 0;
-	
-	EICRA = (2 << ISC20) | (2 << ISC00);	//	INT2 and INT0 falling Edge Interrupt Request
-	EIMSK = (1 << INT2) | (1 << INT0);	//	External Interrupt Request 2 and 0 Enable
-
-	
-	//	USART1 Initialization (RailCom)
-	UBRR1 = (F_CPU / (16 * RAILCOM_BAUDRATE)) - 1;	//	Baudrate
-	UCSR1C = (3 << UCSZ10);	//	8-bit Data Size, No Parity, 1 Stop-bit
-	
-	//	TimerCounter0 Initialization (Occupancy Detection)
-	TCCR0B = (5 << CS00);	//	1024 prescaller
-	TIMSK0 = (1 << TOIE0);	//	Enable TCO overflow interrupt
-
-	XpressNetClientSetup(XPRESSNETADDRESS);
-	
-	sei();	//	Enable Global Interrupts
-		
-    while (1) 
-    {
-		if(bOccupied != bPreviousOccupied)
-		{
-			bPreviousOccupied = bOccupied;
-			uint8_t IdleMessage[] = {0x6, 0x73, 0xF0, 0x00, 0x01, 0x00};
-				
-			if(bOccupied)
-			{
-				IdleMessage[2] = 0xF1;
-			}
-			
-			IdleMessage[5] = IdleMessage[1] ^ IdleMessage[2] ^ IdleMessage[3] ^ IdleMessage[4];
-			XpressNetClientRespond(IdleMessage);
-			
-		}	//	new occupancy state
-		
-		if(bXpressNetMessageFromHostReady)
-		{
-			
-		}	//	bXpressNetMessageReady
-		
-		if(bRailComDataReady)
-		{
 
 			memset(RailcomBuffer, 0, 8);
 			memset(RailComMessage, 0, 8);
 
-			cli();
+//			cli();
 			uint8_t RailcomCount = dataCounter;
 			dataCounter = 0;
 			bRailComDataReady = false;
 			memcpy(RailcomBuffer, (const void*)RawRailcomMessage, RailcomCount);
-			sei();
+//			sei();
 
 			bool ErrorInFrame = false;
 			for(uint8_t index = 0; index < RailcomCount; index++)
@@ -250,7 +171,89 @@ int main(void)
 					bAddressResponded = true;
 				}
 			}	// !ErrorInFrame
+		
+//************************************************************************************************			
 		}
+	}
+	else
+	{
+		//	Falling Edge --> Start of RailCom Gap
+		bRxError = false;
+		EICRA = (3 << ISC20);					//	INT2 Rising Edge Interrupt Request
+		EIMSK = (1 << INT2);					//	this clears INT0 Interrupt enable mask
+		UCSR1B = (1 << RXCIE1) | (1 << RXEN1);	// Receiver Enable, RX Complete Interrupt Enable
+	}
+}
+
+ISR(TIMER0_OVF_vect)	//	Occupancy detection timeout : enter idle state
+{
+	TIFR0 = 0xFF;	//	Clear all pending interrupts
+	TIMSK0 = 0;		//	Disable further interrupts from timer
+	bOccupied = false;
+	bHighAddressValid = false;
+	bLowAddressValid = false;
+	bAddressResponded = false;
+}
+
+ISR(USART1_RX_vect)
+{
+	uint8_t RxErrors = UCSR1A & ((1 << FE1) | (1 << DOR1) | (1 << UPE1));
+	RawRailcomMessage[dataCounter++] = UDR1;
+	
+	if(RxErrors)
+	{
+		dataCounter = 0;
+		bRxError = true;
+	}
+}
+
+uint8_t resetSource = 0;
+
+int main(void)
+{
+	resetSource = MCUSR;
+	MCUSR = 0;
+	
+	EICRA = (2 << ISC20) | (2 << ISC00);	//	INT2 and INT0 falling Edge Interrupt Request
+	EIMSK = (1 << INT2) | (1 << INT0);	//	External Interrupt Request 2 and 0 Enable
+
+	
+	//	USART1 Initialization (RailCom)
+	UBRR1 = (F_CPU / (16 * RAILCOM_BAUDRATE)) - 1;	//	Baudrate
+	UCSR1C = (3 << UCSZ10);	//	8-bit Data Size, No Parity, 1 Stop-bit
+	
+	//	TimerCounter0 Initialization (Occupancy Detection)
+	TCCR0B = (5 << CS00);	//	1024 prescaller
+	TIMSK0 = (1 << TOIE0);	//	Enable TCO overflow interrupt
+
+	XpressNetClientSetup(XPRESSNETADDRESS);
+	
+	sei();	//	Enable Global Interrupts
+		
+    while (1) 
+    {
+		if(bOccupied != bPreviousOccupied)
+		{
+			bPreviousOccupied = bOccupied;
+			uint8_t IdleMessage[] = {0x6, 0x73, 0xF0, 0x00, 0x01, 0x00};
+				
+			if(bOccupied)
+			{
+				IdleMessage[2] = 0xF1;
+			}
+			
+			IdleMessage[5] = IdleMessage[1] ^ IdleMessage[2] ^ IdleMessage[3] ^ IdleMessage[4];
+			XpressNetClientRespond(IdleMessage);
+			
+		}	//	new occupancy state
+		
+		if(bXpressNetMessageFromHostReady)
+		{
+			
+		}	//	bXpressNetMessageReady
+		
+		if(bRailComDataReady)
+		{}
     }
 }
 
